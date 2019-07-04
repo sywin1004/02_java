@@ -18,6 +18,7 @@ public class BolleanTest {
 		isExists = true;
 		isHave = false;
 		
+		
 		// 3. 사용
 		System.out.println("isLikeBaseball= " + isLikeBaseball);
 		System.out.println("isExists=" + isExists);

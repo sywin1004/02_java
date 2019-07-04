@@ -24,6 +24,8 @@ public class Types {
 		String name;
 		
 		
+		
+		
 		// 2. 초기화 구문
 		c = 'A';
 		size = 95;

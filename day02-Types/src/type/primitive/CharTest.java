@@ -11,7 +11,11 @@ public class CharTest {
 	public static void main(String[] args) {
 		// 1. 선언 : 타입이름 변수이름;
 		char input;
-		
+		/*
+		 input = 'A+' // 두 글자 이상을 저장하려는 오류
+		 input = A;   // ''작은따옴표 안에 문자를 쓰지 않았으므로 오류
+		 */ 
+		 
 		// 2. 초기화 : 변수이름 = 값
 		input = 'a';
 		

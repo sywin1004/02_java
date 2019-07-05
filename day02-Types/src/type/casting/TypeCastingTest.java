@@ -26,7 +26,8 @@ public class TypeCastingTest {
 		byte buffer = (byte) result;
 		System.out.println("int result=" + result);
 		System.out.println("byte buffer=" + buffer);
-
+		
+		
 	}
 
 }

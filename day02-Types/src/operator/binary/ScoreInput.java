@@ -40,7 +40,7 @@ public class ScoreInput {
 		 */
 		if (score >= 0 && score <= 100);{
 			System.out.printf("%d 은(는) 유효한 점수입니다.%n", score);
-			} else {
+			}  {
 			System.out.printf("%d 은(는) 범위를 벗어난 점수입니다.%n", score);
 		}
 		

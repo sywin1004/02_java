@@ -35,14 +35,12 @@ public class MultipleOfTwo {
 		// 3. 사용
 		System.out.println("정수를 입력해 주세요");
 		input = scan.nextInt();
-		if (input % 2 == 0) {
+		if (input%2 == 0 ) {
 			System.out.printf("입력값 %d 은(는) 2의 배수입니다.", input);
-		} else if (input == 0) {
-			System.out.println("0");
-		} else {
+		} else if (input % 2 != 0) {
 			mod = input % 2;
 			System.out.printf("입력값 %d 은(는) 2의 배수가 아닙니다. 나머지가 %d입니다.", input, mod);
-		}
+		} 
+	}
 
-}
 }

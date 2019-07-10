@@ -23,7 +23,7 @@ public class ContinueTest {
 			sum += idx;
 		}
 		System.out.printf("1 ~ 100 사이 홀수의 합 : %d%n", sum);
-		
+
 		// continue ==> if ~ else 변경하면
 		sum = 0;
 		for (int idx = 1; idx <= 100; idx++) {
@@ -34,13 +34,13 @@ public class ContinueTest {
 			}
 		}
 		System.out.printf("1 ~ 100 사이 홀수의 합 : %d%n", sum);
-		
+
 		// 문제 : 1 ~ 100 사이의 3의 배수의 합을 구하시오
 		//        continue 를 사용하여 해결
 		System.out.println("================================================");
 		sum = 0;
 		for (int idx = 1; idx <= 100; idx++) {
-			if(idx % 3 != 0) {
+			if (idx % 3 != 0) {
 				continue;
 			}
 			sum += idx;

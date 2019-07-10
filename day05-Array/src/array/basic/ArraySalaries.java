@@ -1,5 +1,7 @@
 package array.basic;
 
+import java.util.Scanner;
+
 /**
  * 직원들의 급여정보 (기본형 int 타입)를
  * 저장하는 배열을 테스트하는 클래스
@@ -79,9 +81,19 @@ public class ArraySalaries {
 		
 		// ====================================================
 		// for loop 와 배열의 조합
+		System.out.println("== for loop 로 출력 ==");
 		for (int idx = 0; idx < salaries.length; idx++) {
 			System.out.printf("salaries[%d]=%d%n", idx, salaries[idx]);
 		}
+		System.out.println("== for loop 로 입력 ==");
+		Scanner scan = new Scanner(System.in);
+		for (int idx = 0; idx < salaries.length; idx++) {
+			System.out.println("정수를 입력하세요");
+			salaries[idx] = scan.nextInt();
+			
+			System.out.printf("salaries[%d]=%d%n", idx, salaries[idx]);
+		}
+		
 	}
 
 }

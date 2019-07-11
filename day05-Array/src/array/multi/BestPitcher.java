@@ -29,7 +29,11 @@ public class BestPitcher {
 		System.out.println("최고의 투수는");
 		for (int idx = 0; idx < era.length; idx++) {
 			for (int ind = 0; ind < era[idx].length; ind++) {
-				System.out.printf("[%d]팀 [%d]선발 방어율[%3.5f]선수", idx, ind, era[idx][ind]);
+				System.out.printf("[%d]팀 [%d]선발 방어율[%3.2f]%n", idx, ind, era[idx][ind]);
+				if(era[idx][ind] == min) {
+				System.out.println("===========================MVP===========================");
+				System.out.printf("[%d]팀 [%d]선발 방어율[%3.2f]선수", idx, ind, min);
+				}
 			}// end inner for
 			System.out.println();
 		} // end outer for

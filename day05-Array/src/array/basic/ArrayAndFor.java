@@ -27,7 +27,20 @@ public class ArrayAndFor {
 
 		// 4. 인덱스 누적값 출력
 		System.out.printf("원소의 합 : %d%n", summary);
-
+		
+		// 5. 새 값 저장
+		for (int idx = 0; idx < numbers.length; idx++) {
+			numbers[idx] = (idx + 1) * 100;
+		}
+		
+		// 6. foreach 구문으로 출력
+		int sum = 0;
+		for (int num: numbers) {
+			sum += num;
+			System.out.println("num=" + num);
+			System.out.println("num값의 총 합 출력 =" + sum);
+		}
+		
 	}
 
 }

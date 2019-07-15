@@ -7,7 +7,7 @@ package practice.methods;
  *
  */
 public class VarietyMethods {
-
+	// 리턴 타입, 메소드 이름 (arguements)list
 	/**
 	 * 화면에 hello, world! 를 출력하는 메소드 sayHello 를 작성하시오.
 	 */
@@ -182,10 +182,14 @@ public class VarietyMethods {
 	 * @return double 배열의 각 원소의 평균
 	 */
 	public double avgOfArray(int[] numbers) {
-		int sum;
-		int avg;
+		int sum; // 총합 변수선언
+		int avg; // 평균 변수선언
 		sum = 0;
 		avg = 0;
+		// foreach문
+//		for (int num: numbers) {
+//			sum += num;
+//		}
 		for(int idx = 0; idx < numbers.length; idx++) {
 			sum += numbers[idx];
 		}
@@ -212,6 +216,10 @@ public class VarietyMethods {
 		} else {
 			System.out.println("연산자를 잘못 입력하셨습니다");
 		}
+	}
+	
+	public String returnOriginalMessage (String message) {
+		return message;
 	}
 	
 }

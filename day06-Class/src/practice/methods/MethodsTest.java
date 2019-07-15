@@ -67,6 +67,9 @@ public class MethodsTest {
 	    methods.adder(30, 60, '+');
 	    methods.adder(70, 80, '-');
 		
+	    //
+	    String returnmessage = methods.returnOriginalMessage("byebye");
+	    System.out.printf(returnmessage);
 	}
 
 }

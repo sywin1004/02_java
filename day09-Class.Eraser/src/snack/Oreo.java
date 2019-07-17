@@ -56,7 +56,7 @@ public class Oreo {
 	}
 	
 	public void print() {
-		System.out.printf("현재 오레오 상태는 크림%s색 반지름%4.1f 두께%4.1f 입니다.", cream, radius, thickness);
+		System.out.printf("현재 오레오 상태는 크림 :%s맛 반지름 :%4.1f 두께 :%4.1f 입니다.%n", cream, radius, thickness);
 	}
 	
 	

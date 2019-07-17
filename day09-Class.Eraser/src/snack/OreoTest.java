@@ -21,11 +21,9 @@ public class OreoTest {
 	public static void main(String[] args) {
 		// 1. 선언
 		Oreo[] oreoBox;
-		Oreo method;
 		
 		// 2. 초기화
 		oreoBox = new Oreo[3];
-		method = new Oreo();
 		
 		oreoBox[0] = new Oreo("딸기", 5.5, 5.5);
 		oreoBox[1] = new Oreo("초코", 5.5, 5.5);
@@ -37,7 +35,7 @@ public class OreoTest {
 		}
 		// 3.2 쿠키 크림 변경 (바닐라) for loop
 		for(int idx = 0; idx < oreoBox.length; idx++) {
-			oreoBox[idx] = method.changCream("바닐라");
+			oreoBox[idx].changCream("바닐라");
 		}
 		// 3.3 쿠키상태 확인 foreach
 		for(Oreo oreo : oreoBox) {

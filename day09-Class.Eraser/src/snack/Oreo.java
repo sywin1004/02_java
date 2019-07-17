@@ -51,7 +51,7 @@ public class Oreo {
 		
 	
 	// 3. 메소드 선언부
-	public void changCream(String cream) {
+	public void changeCream(String cream) {
 		this.cream = cream;
 	}
 	

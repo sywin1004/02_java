@@ -35,7 +35,7 @@ public class OreoTest {
 		}
 		// 3.2 쿠키 크림 변경 (바닐라) for loop
 		for(int idx = 0; idx < oreoBox.length; idx++) {
-			oreoBox[idx].changCream("바닐라");
+			oreoBox[idx].changeCream("바닐라");
 		}
 		// 3.3 쿠키상태 확인 foreach
 		for(Oreo oreo : oreoBox) {

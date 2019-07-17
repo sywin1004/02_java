@@ -51,6 +51,7 @@ public class LectureTestByArray {
 		Marker[] markers = {red, green, blue, black}; // 초기화 리스트 배열은 선언과 동시에 초기화해야함
 		
 		// 3. 사용
+		// foreach 구문 = for(선언식 : 데이터 스트럭쳐){}
 		for(Marker marker : markers) {
 			marker.used();
 		}

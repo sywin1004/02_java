@@ -33,7 +33,7 @@ public class RelationalTest {
 		System.out.printf("%d <= %d : %b%n", a, b, (a <= b));
 		
 		// 이클립스 IDE의 단축키
-		// ctrl + d : 커서가 있는 행 전체 상제
+		// ctrl + d : 커서가 있는 행 전체 삭제
 		// alt + shift + a : 세로줄 편집 기능 토글
 		// alt + up/down : 행 전체 상하 이동
 		// ctrl + shift + L : 단축키 모음 안내창 오픈

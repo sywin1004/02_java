@@ -52,6 +52,13 @@ public class BookShelf {
 		// 내가가진 배열에서 삭제
 		// 폐기 안하고 남는 책을 유지할 새 배열
 		Book[] newBooks;
+		Book deletBook;
+		newBooks = new Book[books.length - 1];
+		for (int idx = 0; idx < books.length; idx++) {
+			if(books[idx].getSequence() == book.getSequence()) {
+				deletBook = books[idx];
+			}
+		}
 		
 		// 1. 폐기할 책이 위치하는 인덱스를 찾기
 		
@@ -102,7 +109,7 @@ public class BookShelf {
 		return findBook;
 	}
 	
-	private int findbookIndex(Book book) {
+	private int findBookIndex(Book book) {
 		int index = -1;
 		Book findBook = null;
 		for (int idx = 0; idx < books.length; idx++) {
@@ -115,7 +122,7 @@ public class BookShelf {
 		return index;
 	}
 	// 전체 책 목록을 얻기
-	public void allBook(Book book) {
+	public void allBooks(Book book) {
 		for(Book allBook: books) {
 			System.out.println(allBook);
 		}

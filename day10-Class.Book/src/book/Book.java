@@ -103,8 +103,18 @@ public class Book {
 	}
 	
 	// company의 setter
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	
+	// totalPage의 getter
+	public int getTotalPage() {
+		return totalPage;
+	}
+	
+	// totalPage의 setter
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
 	}
 	
 

@@ -21,10 +21,10 @@ public class OreoTest {
 	public static void main(String[] args) {
 		// 1. 선언
 		Oreo[] oreoBox;
+	
 		
 		// 2. 초기화
 		oreoBox = new Oreo[3];
-		
 		oreoBox[0] = new Oreo("딸기", 5.5, 5.5);
 		oreoBox[1] = new Oreo("초코", 5.5, 5.5);
 		oreoBox[2] = new Oreo("말차", 5.5, 5.5);

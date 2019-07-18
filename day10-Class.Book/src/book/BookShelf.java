@@ -13,6 +13,8 @@ public class BookShelf {
 	// 멤버변수
 	Book[] books;
 	
+	
+	// 생성자 선언부
 	BookShelf(){
 		books = new Book[0]; // 배열은 초기화가 불가능해 강제 초기화를 해줘야한다.
 	}
@@ -20,6 +22,7 @@ public class BookShelf {
 	BookShelf(Book[] books){
 		this.books = books;
 	}
+	
 	
 	//책장에 책을 추가 : add : void : 매개변수  Book 1개를 받는다.
 	public void add(Book book) {
@@ -105,12 +108,18 @@ public class BookShelf {
 		for (int idx = 0; idx < books.length; idx++) {
 			if (books[idx].getSequence() == book.getSequence()) {
 				findBook = books[idx];
+				index = idx;
 				break;
 			}
 		}
 		return index;
 	}
 	// 전체 책 목록을 얻기
+	public void allBook(Book book) {
+		for(Book allBook: books) {
+			System.out.println(allBook);
+		}
+	}
 	
 	
 	// 접근자

@@ -117,7 +117,26 @@ public class Book {
 		this.totalPage = totalPage;
 	}
 	
-
+	// price의 getter
+	public int getPrice() {
+		return price;
+	}
+	
+	// price의 setter
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	// quantity의 getter
+	public int getQuantity() {
+		return totalPage;
+	}
+	
+	// quantity의 setter
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
 	
 	
 	// 2. 생성자 선언부

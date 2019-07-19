@@ -20,7 +20,9 @@ package snack;
  *
  */
 public class Oreo {
-	// 1. 변수선언부
+	
+	// 1. 변수선언부 멤버변수 선언
+	// TODO 쿠키 일련번호 추가
 	String cream;
 	double radius;
 	double thickness;
@@ -56,8 +58,10 @@ public class Oreo {
 	}
 	
 	public void print() {
-		System.out.printf("현재 오레오 상태는 크림 :%s맛 반지름 :%4.1f 두께 :%4.1f 입니다.%n", cream, radius, thickness);
+		System.out.printf("현재 오레오 상태는 크림 :%s맛 반지름 :%4.1f 두께 :%4.1f 입니다.%n", cream, radius, thickness);	
 	}
+	
+	// TODO 접근자 수정자 추가
 	
 	
 	

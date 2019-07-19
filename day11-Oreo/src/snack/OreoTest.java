@@ -20,27 +20,37 @@ public class OreoTest {
 
 	public static void main(String[] args) {
 		// 1. 선언
-		Oreo[] oreoBox;
-	
+		Oreo[] oreos = new Oreo[0];
 		
+		OreoBox box = new OreoBox(oreos);
+			
 		// 2. 초기화
-		oreoBox = new Oreo[3];
-		oreoBox[0] = new Oreo("딸기", 5.5, 5.5);
-		oreoBox[1] = new Oreo("초코", 5.5, 5.5);
-		oreoBox[2] = new Oreo("말차", 5.5, 5.5);
+		oreos = new Oreo[3];
+		Oreo strawberry = new Oreo(1, "딸기");
+		Oreo choco = new Oreo(2, "초코");
+		Oreo greentea = new Oreo(3, "말차");
 		// 3. 실행
 		// 3.1 쿠키상태 출력 foreach
-		for(Oreo oreo : oreoBox) {
+		for(Oreo oreo : oreos) {
 			oreo.print();
 		}
-		// 3.2 쿠키 크림 변경 (바닐라) for loop
-		for(int idx = 0; idx < oreoBox.length; idx++) {
-			oreoBox[idx].changeCream("바닐라");
+		
+		// 초코 쿠키 (1번 쿠키) 를 바닐라로 변경 : set
+		
+		// 변경된 초코쿠키 (1번 쿠키) :get
+		
+		// 3.2 쿠키 크림 변경 (바닐라) 
+		for (Oreo oreo : box.getAllOreos()) {
+			oreo.changeCream("바닐라");
 		}
 		// 3.3 쿠키상태 확인 foreach
-		for(Oreo oreo : oreoBox) {
+		for(Oreo oreo : oreos) {
 			oreo.print();
 		}
+		
+		// 3번 쿠키 삭제 : remove
+		
+		// 전체 목록 출력
 	}
 
 }

@@ -15,29 +15,34 @@ public class Oreo {
 
 	// 1. 멤버변수 선언
 	// TODO 쿠키 일려번호 int seq; 추가
+	int sequence;
 	String cream;
 	double radius;
 	double thickness;
 
 	// 2. 생성자 중복정의
 	Oreo() {
-
+		
 	}
-
+	
 	// TODO 생성자 seq 필드에 대해 중복정의
-
-	Oreo(String cream) {
+	Oreo (int sequence){
 		this();
+		this.sequence = sequence;
+	}
+	
+	Oreo(int sequence,String cream) {
+		this(sequence);
 		this.cream = cream;
 	}
 
-	Oreo(String cream, double radius) {
-		this(cream);
+	Oreo(int sequence, String cream, double radius) {
+		this(sequence, cream);
 		this.radius = radius;
 	}
 
-	Oreo(String cream, double radius, double thickness) {
-		this(cream, radius);
+	Oreo(int sequence, String cream, double radius, double thickness) {
+		this(sequence,cream, radius);
 		this.thickness = thickness;
 	}
 
@@ -50,6 +55,48 @@ public class Oreo {
 		this.cream = cream;
 	}
 
-	// TODO 접근자, 수정자 추가
+	// TODO 접근자, 수정자 추가 getter setter
+	// getter ==> 리턴타입이 해당 멤버변수와 같은 타입을 받고 매개변수가 비어있다. 이름은 앞의get뒤에 붙는 문자는 대문자
+	// setter ==> 리턴타입이 없고 멤버변수와 같은 타입의 매개변수를 받고 this.멤버변수 = 매개변수 앞의 set 붙이고 붙는문자는 대문자로
+	
+	// sequence 멤버변수의 getter
+	public int getSequence() {
+		return sequence;
+	}
+	
+	// sequence 멤버변수의 setter
+	public void setSequence(int sequence) {
+		this.sequence = sequence;
+	}
+	
+	// cream 멤버변수의 getter
+	public String getCream() {
+		return cream;
+	}
+	
+	// cream 멤버변수의 setter
+	public void setSequence(String cream) {
+		this.cream = cream;
+	}
+	
+	// radius 멤버변수의 getter
+	public double getRadius() {
+		return radius;
+	}
+	
+	// radius 멤버변수의 setter
+	public void setRadius (double radius) {
+		this.radius = radius;
+	}
+	
+	// thickness 멤버변수의 getter
+	public double getThickness() {
+		return thickness;
+	}
+	
+	// thickness 멤버변수의 setter
+	public void setThickness(double thickness) {
+		this.thickness = thickness;
+	}
 
 }

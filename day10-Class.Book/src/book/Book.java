@@ -31,7 +31,7 @@ package book;
  *       리턴타입이 해당 멤버변수 필드의 타입과 맞춤
  *       
  *  예) sequence 필드의 getter 는 다음의 규격을 갖는다.
- *  int getSequence(){
+ *  public int getSequence(){
  *  return this.sequence;
  *  }
  *  
@@ -39,7 +39,7 @@ package book;
  *  == > set으로 시작하고 멤버변수 필드의 첫글자를 대문자로 조합
  *       매개변수는 해당 멤버변수 필드와 같은 변수로 받는다.
  *       리턴값이 없이 작성
- *  void setSequence(int sequence) {
+ *  public void setSequence(int sequence) {
  *  this.sequence = sequence;
  *  }
  *  

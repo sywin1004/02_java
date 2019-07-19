@@ -30,7 +30,9 @@ public class OreoBox {
 		return null; // 나중에 채우는것
 	}
 	
-	public Oreo[] 
+	public Oreo[] getAllOreos() {
+		
+	}
 	
 	
 	

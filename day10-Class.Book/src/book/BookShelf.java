@@ -51,33 +51,44 @@ public class BookShelf {
 		// 삭제
 		// 내가가진 배열에서 삭제
 		// 폐기 안하고 남는 책을 유지할 새 배열
+		// 1. 선언 , 2. 초기화
+		int index = findBookIndex(book);
 		Book[] newBooks;
 		Book deletBook;
-		newBooks = new Book[books.length - 1];
-		for (int idx = 0; idx < books.length; idx++) {
-			if(books[idx].getSequence() == book.getSequence()) {
-				deletBook = books[idx];
-			}
-		}
 		
+		// 3. 실행
 		// 1. 폐기할 책이 위치하는 인덱스를 찾기
-		
-		// 2. 폐기할 책의 인덱스가 -1 보다 크면 
-		//    폐기할 책이 있다는 의미로 판단하고 삭제로직 진입
-		
-		// 3. 폐기 안할 책을 유지할 새 배열을 지금 배열 -1 크기로 생성
-		
-		// 4. 폐기할 인덱스가 배열 중간일 때
-		//    (1) 삭제할 책 안쪽의 책정보는 같은 인덱스로 복사
-		//    (2) 삭제할 책 뒤쪽의 남는 책정보는 현재 인덱스 -1 위치로 복사
-		
-		// 5. 폐기할 인덱스가 배열 끝일 때
-		//    폐기할 책 인덱스 앞쪽까지만 새 배열에 복사
-		
-		// 6. 남는 책이 복사된 새 배열을 
-		//    this.books 에 새로 저장
-		this.books = newBooks;
+		if(index > -1) {
+			// 2. 폐기할 책의 인덱스가 -1 보다 크면 
+			//    폐기할 책이 있다는 의미로 판단하고 삭제로직 진입
+			// 3. 폐기 안할 책을 유지할 새 배열을 지금 배열 -1 크기로 생성
+			newBooks = new Book[books.length - 1];
+			
+			// 4. 폐기할 인덱스가 배열 중간일 때
+			if(index < books.length - 1) {
+				//    (1) 삭제할 책 안쪽의 책정보는 같은 인덱스로 복사 삭제하려는 인덱스 전 까지
+				for (int idx = 0; idx < index; idx++) {
+					newBooks[idx] = books[idx];
+				}
+				//    (2) 삭제할 책 뒤쪽의 남는 책정보는 현재 인덱스 -1 위치로 복사
+				for (int idx = index; idx < newBooks.length; idx++) {
+					newBooks[idx] = books[idx + 1];
+				}
+			} else {
+				// 5. 폐기할 인덱스가 배열 끝일 때
+				//    폐기할 책 인덱스 앞쪽까지만 새 배열에 복사
+				for (int idx = 0; idx < books.length - 1; idx++) {
+					newBooks[idx] = books[idx];
+				}
+			} 
+			// 6. 남는 책이 복사된 새 배열을 
+			//    this.books 에 새로 저장
+			this.books = newBooks;
+		}
 	}
+	
+				
+				
 	
 	// 책 정보를 수정 : void : set(Book book)
 	public void set(Book book) {
@@ -97,8 +108,15 @@ public class BookShelf {
 		return findBook(book);
 	}
 	
+	/**
+	 * 매개변수로 전달된 책 정보와
+	 * 일치하는 일련번호를 가진 책(책 배열: books에 있는)을 찾아서 배열에 안에 들어있는 책을 리턴
+	 * @param book
+	 * @return
+	 */
 	private Book findBook(Book book) {
 		Book findBook = null;
+		// 서점에서 book을 받으면 books배열에서 sequence가 같은 책을 findBook에 넣어서 리턴함
 		for (int idx = 0; idx < books.length; idx++) {
 			if (books[idx].getSequence() == book.getSequence()) {
 				//같은책 찾았다
@@ -106,11 +124,12 @@ public class BookShelf {
 				break;
 			}
 		}
-		return findBook;
+		return findBook; // 리턴은 마지막에 한번 깔끔하게
 	}
 	
 	private int findBookIndex(Book book) {
-		int index = -1;
+		// book과 같은녀석을 찾을 수 있는 위치를 알려주는 메소드
+		int index = -1; // 배열이 0번부터 시작하기 때문에 -1로 초기화
 		Book findBook = null;
 		for (int idx = 0; idx < books.length; idx++) {
 			if (books[idx].getSequence() == book.getSequence()) {
@@ -122,10 +141,8 @@ public class BookShelf {
 		return index;
 	}
 	// 전체 책 목록을 얻기
-	public void allBooks(Book book) {
-		for(Book allBook: books) {
-			System.out.println(allBook);
-		}
+	public Book[] getAllBooks(Book book) {
+		return this.books;
 	}
 	
 	

@@ -141,7 +141,7 @@ public class BookShelf {
 		return index;
 	}
 	// 전체 책 목록을 얻기
-	public Book[] getAllBooks(Book book) {
+	public Book[] getAllBooks() {
 		return this.books;
 	}
 	

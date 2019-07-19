@@ -189,7 +189,7 @@ public class Book {
 	// buy (int amount)
 	// sell (int amount)
 	public void print() {
-		System.out.printf("이 책의 일련번호 :%d ISBN :%s 제목 :%s 저자 :%s 출판사 :%s 총페이지 :%d 재고수량 :%d 입니다.%n", sequence, isbn, title, author, company, totalPage, price, quantity);
+		System.out.printf("이 책의 일련번호 :%d\t ISBN :%s \t제목 :%s \t\t저자 :%s \t출판사 :%s \t총페이지 :%d \t재고수량 :%d 입니다.%n", sequence, isbn, title, author, company, totalPage, price, quantity);
 	}
 	
 	public void buy(int amount) {

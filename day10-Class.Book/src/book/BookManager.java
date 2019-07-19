@@ -2,6 +2,7 @@ package book;
 
 /**
  * 책장(BookShelf)를 사용하는 북매니저를 나타내는 클래스
+ * 내가 만드는 클래스의 범위를 벗어나지 않는 디자인
  * -------------------------------------------------------
  * 서점의 북매니저는
  * 
@@ -27,11 +28,37 @@ public class BookManager {
 	// 2. 생성자 선언부
 	// (1) 기본생성자 명시
 	BookManager(){
-		bookShelf = new BookShelf();
+		bookShelf = new BookShelf(); // 매니저가 책장을 만드는듯한 시점
 	}
 	
 	// (2) 매개변수 생성자 작성
 	BookManager(BookShelf bookShelf){
-		this.bookShelf = bookShelf;
+		this.bookShelf = bookShelf; // 만들어진 책장을 받는 시점
+	}
+	
+	// 3. 메소드 선언
+	// (1) 매니저는 책 한권을 책장에 가져가서  add
+	//     새로 꼽을 수 있다.
+	public void add(Book book) {
+		this.bookShelf.add(book);
+	}
+	// (2) 매니저는 책장에 가서 더 이상 팔지않을 책을 제거할 수 있다 remove
+	public void remove(Book book) {
+		this.bookShelf.remove(book);
+	}
+	
+	// (3) 매니저는 책장에서 찾아달라고 고객이 요청한 책 한개를 가지고 올 수 있다. get
+	public Book get(Book book) {
+		return this.bookShelf.get(book);
+	}
+	
+	// (4) 매니저는 책장에 가서 판매 가격 등을 수정 할 수 있다. set
+	public void set(Book book) {
+		this.bookShelf.set(book);
+	}
+	
+	// (5) 매니저는 서점에서 판매되고 있는 책의 목록을 보여줄 수 있다.
+	public Book[] getAllBooks() {
+		return bookShelf.getAllBooks();
 	}
 }

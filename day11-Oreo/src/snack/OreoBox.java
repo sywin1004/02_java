@@ -7,8 +7,10 @@ package snack;
  *
  */
 public class OreoBox {
+	
+
 	// TODO Oreo 를 여러개 저장할 수 있는
-	// Oreo[] oreos 를 멤버 변수로 받는 선언
+	// Oreo[] oreos 를 멤버 변수로 갖도록 선언
 	
 	// TODO 생성자 기본, 매개변수 중복정의
 	
@@ -27,13 +29,11 @@ public class OreoBox {
 	}
 	
 	public Oreo get(Oreo oreo) {
-		return null; // 나중에 채우는것
+		return null;
 	}
 	
 	public Oreo[] getAllOreos() {
-		
+		return null;	
 	}
-	
-	
 	
 }

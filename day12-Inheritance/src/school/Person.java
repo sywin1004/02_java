@@ -6,7 +6,7 @@ public abstract class Person {
 	private int age;
 	
 	public void print() {
-		System.out.println();
+		System.out.println(id + name + age);
 	}
 	
 	public String toString() {

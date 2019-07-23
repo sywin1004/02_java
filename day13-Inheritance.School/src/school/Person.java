@@ -75,6 +75,10 @@ public abstract class Person {
 	 * 현재의 객체를 출력하는 메소드
 	 */
 	public void print() {
+		// 가상 메소드 호출(virtual method invocation)
+		// 부모클래스에 정의된 메소드를 호출해도
+		// 실제 인스턴스 타입의 하위클래스에 정의된 메소드가 응답하는 것
+		// 가상메소드 호출이 되기 위해서는 반드시 상속이 전제되어야 함
 		System.out.println(this); // this <= 멤버변수를 가르키는 instance를 가르킴 toString이 선언되었기 때문에 this가 선언 가능
 	}
 }

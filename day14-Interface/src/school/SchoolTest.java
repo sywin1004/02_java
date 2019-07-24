@@ -45,9 +45,9 @@ public class SchoolTest {
 		persons[1] = new Teacher("T01", "정약용", 32, "실학");
 		persons[2] = new Employee("E01", "허균", 48, "문학예술지원부");		
 		
-		for(Person person: persons) {
-			System.out.println(person.attend());
-		}
+//		for(Person person: persons) {
+//			System.out.println(person.attend());
+//		}
 	}
 
 }

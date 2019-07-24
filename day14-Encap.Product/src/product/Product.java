@@ -44,14 +44,14 @@ package product;
  *
  */
 public class Product {
-	/**
-	 * 멤버변수 선언부
-	 * 제품코드, 이름 , 가격, 재고를 나타냄
-	 */
-	String pcode;
-	String pname;
-	int price;
-	int quantity;
+	/** 제품코드 */
+	private String pcode;
+	/** 제품이름 */
+	private String pname;
+	/** 가격 */
+	private int price;
+	/** 재고수량 */
+	private int quantity;
 	
 	/**
 	 *생성자를 선언 기본생성자, this를 사용한 중복정의 
@@ -123,5 +123,37 @@ public class Product {
 	 */
 	public void buy(int amount) {
 		quantity += amount;
+	}
+	
+	// 수정자 메소드 선언
+	public void setPcode(String pcode) {
+		this.pcode = pcode;
+	}
+	
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	// 접근자 메소드 선언
+	public String getPcode() {
+		return pcode;
+	}
+	
+	public String getPname() {
+		return pname;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public int getQuantity() {
+		return quantity;
 	}
 }

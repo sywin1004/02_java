@@ -39,6 +39,7 @@ public class BonguseTest {
 		
 		// 주문상태 확인
 		order.print();
+		
 	}
 
 }

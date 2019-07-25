@@ -12,10 +12,13 @@ package bonguse;
  * 기본생성자
  * 생성자 중복정의
  * ------------------------------------
- * 메소드
+ * 
  * 메뉴 입력시 그 속재료를 알려주는 출력
+ * 메소드
+ *
  * 
  * @author Administrator
+ *
  *
  */
 public class Menu {

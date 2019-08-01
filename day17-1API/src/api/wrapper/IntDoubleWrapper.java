@@ -20,13 +20,13 @@ public class IntDoubleWrapper {
 		
 		// 1. 사용할 문자열수 선언, 초기화
 		String intInput = "100";
-		String dbInput = "200. 0";
+		String dbInput = "200.0";
 		
 		// 2. String ==> 기본형
 		// (1) parseType() : 각 포장 클래스의 static 메소드 사용
-		String intFrm = String.format("문자열[%s] ==> 기본형[%d]", intInput, Integer.parseInt(intInput));
+		String intFrm = String.format("문자열[%s] ==> 기본형(int)[%d]", intInput, Integer.parseInt(intInput));
 		
-		String dbFrm = String.format("문자열 [%s] ==> 기본형[%f]", dbInput, Double.parseDouble(dbInput));
+		String dbFrm = String.format("문자열 [%s] ==> 기본형(double)[%f]", dbInput, Double.parseDouble(dbInput));
 		
 		// (2) 변경된 값들 출력
 		System.out.println(intFrm);
@@ -52,11 +52,10 @@ public class IntDoubleWrapper {
 		int ten = 10;
 		double sixty = 60.0;
 		
-		String tenStr;
-		String sixtyStr;
+
 		
 		String tenStr = new Integer(ten).toString();
-		String sixtyString = new Double(sixty).toString();
+		String sixtyStr = new Double(sixty).toString();
 		
 		// String 변경 확인을 위하여 String 의 + 연산 시도
 		tenStr += "입니다.";
@@ -86,11 +85,11 @@ public class IntDoubleWrapper {
 		
 		// autoBoxing : 기본형 데이터가 참조형 변수에 new 없이 바로 담기는 기법
 		
-		// (1) autoBoxint 적용 전 : 
+		// (1) autoBoxint 적용 전 : 반드시 포장클래스의 생성자를 사용해야 함
 		Integer objOne = new Integer(1);
 		int one = 1;
 		
-		// (2) autoBoxing 적용 후
+		// (2) autoBoxing 적용 후 : 포장클래스 변수를 마치 기본형 변수인 듯 기본형 값 바로 저장을 지원
 		Integer objFive = 5;
 		
 		// (3) autoUnboxing 적용 전 : 명시적으로 typeValue 메소드 호출

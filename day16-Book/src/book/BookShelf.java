@@ -1,7 +1,7 @@
 package book;
 
 import java.util.Arrays;
-
+import static java.util.Arrays.copyOf;
 /**
  * Book 여러개가 꼽혀있어
  * 책 객체 여러개를 한번에 저장하고 

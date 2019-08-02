@@ -94,7 +94,8 @@ public class ListTest {
 		System.out.println("삭제 후 list 의 크기");
 		
 		for(int idx = 0; idx < list.size(); idx++) {
-			System.out.println(idx + ":" list.get(idx));
+			System.out.println(idx + ":" + list.get(idx));
+			
 		}
 		
 	}

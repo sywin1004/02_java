@@ -1,5 +1,7 @@
 package api.map;
 
+import static java.lang.Integer.valueOf;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -50,8 +52,14 @@ public class BookMapTest {
 		books.put(vegetarian.getSequence(), vegetarian);
 		books.put(littlePrince.getSequence(), littlePrince);
 		books.put(noDaap.getSequence(), noDaap);
-		books.put(new Integer(dduk.getSequence()), dduk);
 		books.put(ax.getSequence(), ax);
+		// new Integer로 직접 포장
+		books.put(new Integer(dduk.getSequence()), dduk);
+		
+		// Integer 객체로 포장하는 또 다른 방법
+		// static 메소드인 valueOf(int) 를 사용함, import static
+		books.put(valueOf(dduk.getQuantity()), dduk);
+		books.put(valueOf(ax.getQuantity()), ax);
 		
 		// keyset으로 key꾸러미 얻기
 		Set<Integer> keys = books.keySet(); // Generic을 줘서 Integer만 받은 keyset을 받을 수 있다.
@@ -67,7 +75,14 @@ public class BookMapTest {
 			books.get(key).setPrice((int)(price * 0.9));
 			System.out.printf("key=%d : Value=%s%n", key,books.get(key));
 		}
-
+		
+		// JSON Object notation
+		
+		// Map과 Set을 익히면 이런 선언도 가능해진다
+//		Map<Integer, Book>[] bookMaps = new HashMap[5];		
+//		List<Map<Integer, Book>> booksList;
+//		Set<Map<Integer, Map<Integer, List<Integer>>>> booksSet;
+		
 		
 	}
 

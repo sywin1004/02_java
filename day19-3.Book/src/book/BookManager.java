@@ -26,7 +26,9 @@ import book.resp.SingleResp;
 public class BookManager {
 
 	// 1. 멤버변수 선언부
-	private ArrayBookShelf bookShelf;
+	// 일반적인 모든 책장을 다룰 수 있도록
+	// 인터페이스 타입의 책장 변수로 변경하여 선언
+	private BookShelf bookShelf;
 
 	// 매니저가 어떤 작업 후에 어떻게 응답해야 할지를 나타내는 타입
 	private Response response;
@@ -38,7 +40,7 @@ public class BookManager {
 	}
 
 	// (2) 매개변수 생성자 작성
-	public BookManager(ArrayBookShelf bookShelf) {
+	public BookManager(BookShelf bookShelf) {
 		this.bookShelf = bookShelf;
 	}
 

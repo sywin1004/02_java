@@ -14,7 +14,7 @@ import java.util.List;
  * @author 304
  *
  */
-public class ArrayBookShelf {
+public class ArrayBookShelf implements BookShelf {
 
 	// 멤버변수
 	private Book[] books;
@@ -139,9 +139,9 @@ public class ArrayBookShelf {
 	// 전체 책 목록을 얻기 : getAllBooks()
 	public List<Book> getAllBooks() {
 		// Arrays 클래스 안에 있는 static 메소드 사용하여
-		// Book[] 을 List<Book> 으로 변경하여 리턴
+		// Book[] 을 List<Book> 로 변경하여 리턴
 		// 왜냐하면 BookShelf 인터페이스 구현으로
-		// 리턴타입을 맞춰주기 위해서
+		// 리턴타입 맞추기 위해서
 		return Arrays.asList(this.books);
 	}
 
@@ -219,5 +219,4 @@ public class ArrayBookShelf {
 		// 1번만 하는 습관 들이세요.
 		return exists;
 	}
-
 }

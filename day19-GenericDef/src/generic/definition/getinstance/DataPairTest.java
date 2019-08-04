@@ -1,5 +1,6 @@
-package generic.definition;
+package generic.definition.getinstance;
 
+import static generic.definition.getinstance.DataPair.getInstance;
 /**
  * Generic 을 사용하여
  * 사용자 정의한 클래스인
@@ -17,9 +18,9 @@ public class DataPairTest {
 		DataPair<Integer, Book> idDataPari;
 		
 		// 2. 초기화
-		isDataPair = new DataPair<>(1, "one");
-		ssDataPair = new DataPair<>("two", "둘");
-		idDataPari = new DataPair<>(1, new Book(1));
+		isDataPair = getInstance(1, "one");
+		ssDataPair = getInstance("two", "둘");
+		idDataPari = getInstance(1, new Book(1));
 		
 		// 3. 사용
 		System.out.printf("%d:%s%n", isDataPair.getKey(), isDataPair.getValue());

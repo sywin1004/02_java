@@ -1,4 +1,4 @@
-package generic.definition;
+package generic.definition.getinstance;
 
 /**
  * Generic 사용시점 : <> 안에 모든 참조형 타입명이 들어갈 수 있음
@@ -33,12 +33,12 @@ public class DataPair<K, V> {
 	
 	// 2. 생성자 선언부
 	// (1) 기본생성자
-	public DataPair() {
+	private DataPair() {
 		
 	}
 	
 	// (2) K, V 를 쌍으로 받는 생성자
-	public DataPair(K key, V value) {
+	private DataPair(K key, V value) {
 		this();
 		this.key = key;
 		this.value = value;
@@ -64,7 +64,18 @@ public class DataPair<K, V> {
 	}
 	
 	// (2) 이 클래스 타입의 인스턴스를 리턴하는
-	//     static 메소드 작성
+	//     static 메소드 getInstance() 작성
+	//     static 메소드로 
+	//     여기서 키와 밸류를 쓴다는 뜻      
+	//					return type
+	
+	public static <K, V> DataPair getInstance(K key, V value) {
+		// getInstance() 메소드 내부에서
+		// private 생성자 호출이 일어남
+		
+		return new DataPair<>(key, value);
+	}
+		
 	
 }	
 	

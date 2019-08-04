@@ -6,6 +6,7 @@ import java.util.Map;
 /**
  * Map 구조로 구현된 책장 클래스
  * 
+ * 
  * @author Administrator
  *
  */
@@ -16,12 +17,15 @@ public class MapBookShelf implements BookShelf {
 	
 	// 2. 생성자
 	// (1) 기본생성자
-	public Map<Integer, Book>(){
+	public MapBookShelf(){
 		
 	}
 	
 	
 	// (2) 매개변수 생성자
+	public MapBookShelf() {
+		
+	}
 	
 	@Override
 	public int add(Book book) {

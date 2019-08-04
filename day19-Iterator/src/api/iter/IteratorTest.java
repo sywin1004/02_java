@@ -49,6 +49,7 @@ public class IteratorTest {
 		System.out.println("================2================");
 		printSet(set);
 
+	}
 		/**
 		 * method refactoring 을 통해 추출한 메소드
 		 * 반복 알고리즘, 반복 로직 처리를 위한 메소드는
@@ -56,12 +57,12 @@ public class IteratorTest {
 		 * @param set
 		 */
 	private static void printSet(Set<Integer> set) {
-		Iterator<Integer> iter;
-		iter = set.iterator();
-		while(iter.hasNext()) {
+			Iterator<Integer> iter;
+			iter = set.iterator();
+			
+		while (iter.hasNext()) {
 			int number = iter.next();
-			System.out.println("number =" + number);
+			System.out.println("number=" + number);
 		}
 	}
-
 }

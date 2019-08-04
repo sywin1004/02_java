@@ -55,19 +55,30 @@ public class DataPair<K, V> {
 		this.key = key;
 	}
 	
-	public V getValue() {
-		return this.value;
-	}
-	
-	public void setValue(V value) {
-		this.value = value;
-	}
+//	public V getValue() {
+//		return this.value;
+//	}
+//	
+//	public void setValue(V value) {
+//		this.value = value;
+//	}
 	
 	// (2) 이 클래스 타입의 인스턴스를 리턴하는
 	//     static 메소드 getInstance() 작성
 	//     static 메소드로 
 	//     여기서 키와 밸류를 쓴다는 뜻      
 	//					return type
+	
+	
+	// 3. 메소드 선언부
+	public K getPairKey() {
+		return this.key;
+	}
+	
+	
+	public V getPairValue(K key) {
+		return this.value;
+	}
 	
 	public static <K, V> DataPair getInstance(K key, V value) {
 		// getInstance() 메소드 내부에서

@@ -1,5 +1,7 @@
 package book;
 
+import book.exception.DuplicateException;
+import book.exception.NotFoundException;
 import book.resp.ListResp;
 import book.resp.MessageResp;
 import book.resp.Response;
@@ -48,18 +50,32 @@ public class BookManager {
 	// (1) 매니저는 책 한권을 책장에 가져가서
 	// 새로 꼽을 수 있다.
 	public void add(Book book) {
-		int addCnt = this.bookShelf.add(book);
-
-		String message;
-		response = new MessageResp();
-
-		if (addCnt > 0) {
+		int addCnt;
+		String message = null;
+		try {
+			addCnt = this.bookShelf.add(book);
 			message = String.format(book.toString() + "%d 건이 추가되었습니다.", addCnt);
-		} else {
-			message = String.format(book.toString() + "가 이미 존재합니다.");
+		} catch (DuplicateException e) {
+			message = e.getMessage();
+			// catch 블록을 작성할 때
+			// 일반적인으로 e.printStackTrace() 를 적는 것이 관례이나
+			// 보안상의 이유로 프로그램을 출시할때는
+			// 제거하도록 권고받는 코드이다.
+			e.printStackTrace();
+		} finally {
+			response = new MessageResp();
+			response.response(message);
 		}
-		response.response(message);
 	}
+//		String message;
+//
+//		if (addCnt > 0) {
+//			message = String.format(book.toString() + "%d 건이 추가되었습니다.", addCnt);
+//		} else {
+//			message = String.format(book.toString() + "가 이미 존재합니다.");
+//		}
+//		response.response(message);
+//	}
 
 	/**
 	 * 책 한권을 폐기(삭제)함
@@ -72,19 +88,31 @@ public class BookManager {
 	 * @param book
 	 */
 	public void remove(Book book) {
-		int rmCnt = this.bookShelf.remove(book);
-
+		int rmCnt;
 		String message;
-		response = new MessageResp();
-
-		if (rmCnt > 0) {
+		
+		message = null;
+		
+		try {
+			rmCnt = this.bookShelf.remove(book);
 			message = String.format(book.toString() + "%d 건이 삭제되었습니다.", rmCnt);
-		} else {
-			message = "삭제하려는 도서가 존재하지 않습니다.";
+		} catch (NotFoundException e) {
+			message = e.getMessage();
+			e.printStackTrace();
+		} finally {
+			response = new MessageResp();
+			response.response(message);
+			
 		}
+	}	
 
-		response.response(message);
-	}
+//		if (rmCnt > 0) {
+//			message = String.format(book.toString() + "%d 건이 삭제되었습니다.", rmCnt);
+//		} else {
+//			message = "삭제하려는 도서가 존재하지 않습니다.";
+//		}
+//
+//	}
 
 	/**
 	 * 매니저는 책장에서 찾아달라고 고객이 요청한 책 한개를 가지고 올 수 있다. 이 때 책을 가져오며 책의 정보를 알려주는 응답을 한다.
@@ -100,23 +128,32 @@ public class BookManager {
 	 * @param book
 	 */
 	public void get(Book book) {
-		Book findBook = this.bookShelf.get(book);
-
-		if (findBook != null) {
-			// 책 한건의 정보를 출력하는 기능을 담당하는 응답 타입인
-			// SingleResp 타입으로 응답 인스턴스를 생성하고
+		Book findBook;
+		try {
+			findBook = this.bookShelf.get(book);
 			response = new SingleResp();
-			// 바로 찾은 findBook 객체를 넘겨 찾은 책의 정보를 출력한다.
 			response.response(findBook);
-		} else {
-			// 찾은 책이 없는 경우는 찾는 도서가 없습니다. 라는 메시지를 처리할 수 있어야 하므로
-			// 메시지를 처리할 수 있는 MessageResp 타입으로
-			// 응답 인스턴스를 생성하고
-			response = new MessageResp();
-			// 이렇게 생성한 response 객체에 찾기 실패 메시지를 출력하도록 한다.
-			response.response("찾는 도서가 존재하지 않습니다.");
+		} catch (NotFoundException e) {
+			response = new SingleResp();
+			response.response(e.getMessage());
+			e.printStackTrace();
 		}
 	}
+//		if (findBook != null) {
+//			// 책 한건의 정보를 출력하는 기능을 담당하는 응답 타입인
+//			// SingleResp 타입으로 응답 인스턴스를 생성하고
+//			response = new SingleResp();
+//			// 바로 찾은 findBook 객체를 넘겨 찾은 책의 정보를 출력한다.
+//			response.response(findBook);
+//		} else {
+//			// 찾은 책이 없는 경우는 찾는 도서가 없습니다. 라는 메시지를 처리할 수 있어야 하므로
+//			// 메시지를 처리할 수 있는 MessageResp 타입으로
+//			// 응답 인스턴스를 생성하고
+//			response = new MessageResp();
+//			// 이렇게 생성한 response 객체에 찾기 실패 메시지를 출력하도록 한다.
+//			response.response("찾는 도서가 존재하지 않습니다.");
+//		}
+//	}
 
 	/**
 	 * 매니저는 책장에 가서 판매 가격 등 책의 정보를 수정할 수 있다.
@@ -128,17 +165,28 @@ public class BookManager {
 	 * @param book
 	 */
 	public void set(Book book) {
-		int setCnt = this.bookShelf.set(book);
-
-		String message;
-		response = new MessageResp();
-		if (setCnt > 0) {
+		int setCnt;
+		String message = null;
+		try {
+			setCnt = this.bookShelf.set(book);
 			message = String.format(book.toString() + " %d 건을 수정하였습니다.", setCnt);
-		} else {
-			message = "수정하려는 도서가 존재하지 않습니다.";
+		} catch (NotFoundException e) {
+			message = e.getMessage();
+			e.printStackTrace();
+		} finally {
+			response = new MessageResp();
+			response.response(message);
 		}
 
-		response.response(message);
+//		String message;
+//		response = new MessageResp();
+//		if (setCnt > 0) {
+//			message = String.format(book.toString() + " %d 건을 수정하였습니다.", setCnt);
+//		} else {
+//			message = "수정하려는 도서가 존재하지 않습니다.";
+//		}
+//
+//		response.response(message);
 	}
 
 	// (5) 매니저는 서점에서 판매되고 있는 책의 목록을

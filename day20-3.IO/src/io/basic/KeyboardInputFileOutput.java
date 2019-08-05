@@ -36,33 +36,36 @@ public class KeyboardInputFileOutput {
 
 	public static void main(String[] args) throws IOException {
 		// 1. 입력 : node stream : System.in
-		InputStream in = System.in;
+//		InputStream in = System.in;
 		
-		// 2. 입력 : filter stream : stream => reader\
-		InputStreamReader ir = new InputStreamReader(in);
+		// 2. 입력 : filter stream : stream --> reader
+//		InputStreamReader ir = new InputStreamReader(in);
 		
-		// 3. 입력 : filter stream : reader => reader
-		BufferedReader br = new BufferedReader(ir);
-		
+		// 3. 입력 : filter stream : reader --> reader
+//		BufferedReader br = new BufferedReader(ir);
+		BufferedReader br = 
+				new BufferedReader(new InputStreamReader(System.in));
+
 		// 5. 출력 : node stream : file : FileWriter
-		FileWriter fw = new FileWriter("out.txt");
+//		FileWriter fw = new FileWriter("out.txt");
 		
-		// 6. 출력 : filter stream : writer => writer
-		PrintWriter out = new PrintWriter(fw);
+		// 6. 출력 : filter stream : writer --> writer
+//		PrintWriter out = new PrintWriter(fw);
+		PrintWriter out = new PrintWriter(new FileWriter("out.txt"));
 		
 		// 4. 입력 filter stream 에서 읽기
 		System.out.println("값을 입력하세요. (ctrl + z 입력시 중단)");
 		
 		String readData = null;
 		while ((readData = br.readLine()) != null) {
+			// 7. 출력 filter stream 에 쓰기
 			out.println(readData);
+			//    화면 출력
+			System.out.println("읽은 데이터:" + readData);
 		}
-		// 화면 출력
-		 System.out.println("읽은 데이터:" + readData);
-		 
-		 // 8, 9 객체 닫기
-		 br.close();
-		 out.close();
+		
+		// 8, 9 객체 닫기
+		br.close();
+		out.close();
 	}
-
 }

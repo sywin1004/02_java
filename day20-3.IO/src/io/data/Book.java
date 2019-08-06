@@ -1,4 +1,4 @@
-package io.object;
+package io.data;
 
 import java.io.Serializable;
 
@@ -63,12 +63,12 @@ import java.io.Serializable;
 public class Book implements Serializable {
 	private int sequence;
 	private String isbn;
-	transient private String title;
-	transient private String author;
-	transient private String company;
-	transient private int totalPage;
-	transient private int price;
-	transient private int quantity;
+    private String title;
+    private String author;
+    private String company;
+    private int totalPage;
+    private int price;
+    private int quantity;
 	
 	public Book() {
 		

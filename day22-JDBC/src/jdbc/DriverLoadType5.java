@@ -7,8 +7,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import oracle.jdbc.driver.OracleDriver;
-
 /**
  * SCOTT 계정의 EMP 테이블의 내용을 조회하여 데이터 베이스 접속을 테스트하는 클래스
  * ---------------------------------------- 1. 드라이버 로드 2. 커넥션 맺기 3. 쿼리 준비 4. 쿼리
@@ -17,27 +15,43 @@ import oracle.jdbc.driver.OracleDriver;
  * @author Administrator
  *
  */
-public class DriverLoadType1 {
+public class DriverLoadType5 {
 	// DB 커넥션 정보를 static 상수로 선언
 
 	private static final String URL = "jdbc:oracle:thin:@//127.0.0.1:1521/XE";
+	
+	private static final String MYSQL_URL = "jdbc:mysql://127.0.0.1:3306/emp?serverTimezone=Asia/Seoul";
+	
 	private static final String USER = "SCOTT";
 	private static final String PASSWORD = "TIGER";
+	
+	private static final String DRIVER = "oracle.jdbc.OracleDriver";
+	private static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
 
 	public static void main(String[] args) {
-//		1. 드라이버 로드
-		new OracleDriver();
-
-//		2. 커넥션 맺기
-		// JDBC 연결에 필요한
+		// JDBC 연결에 필요한 객체들 선언
 		Connection connection = null;
 		Statement stmt = null;
 		ResultSet result = null;
+
+
 		try {
+
+			//			1. 드라이버 로드
+			Class.forName(DRIVER);
+//			Class.forName(MYSQL_DRIVER);
+
+			//		2. 커넥션 맺기
 			connection = DriverManager.getConnection(URL, USER, PASSWORD);
+//			connection = MYSQL_DRIVER.getConnection(MYSQL_URL, USER, PASSWORD);
+			
 //		3. 쿼리 준비  
-			String sql = "SELECT e.empno" + "     , e.ename" + "     , e.job" + "     , e.sal" + "  FROM emp e"
-					+ " ORDER BY e.ename";
+			String sql = "SELECT e.empno" 
+                       + "     , e.ename" 
+					   + "     , e.job" 
+                       + "     , e.sal" 
+					   + "  FROM emp e"
+					   + " ORDER BY e.ename";
 
 			stmt = connection.createStatement();
 
@@ -67,7 +81,13 @@ public class DriverLoadType1 {
 				int sal = result.getInt(4);
 				System.out.printf("%4d | %6s | %9s | %4d%n", empno, ename, job, sal);
 			}
-		} catch (SQLException e) {
+		} catch(SQLException e) {
+			System.err.println("SQL 구문 실행시 오류! " + e.getMessage());
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			
+			System.out.println("드라이버 로드시 오류!" + e.getMessage());
 			e.printStackTrace();
 		} finally {
 			// 6. 자원 해제
@@ -84,7 +104,7 @@ public class DriverLoadType1 {
 					connection.close();
 				}
 			} catch (SQLException e) {
-				System.out.println("자원 해제시 오류!" + e.getMessage());
+				System.err.println("자원 해제시 오류!" + e.getMessage());
 				e.printStackTrace();
 			}
 		}

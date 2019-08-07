@@ -50,8 +50,10 @@ public class StatementTest {
 			System.out.println("조회할 대상의 JOB 을 입력하세요");
 			System.out.println("CLERK, SLAESMAN, MANAGER, ANALYST, PRESIDENT");
 			String jobSales = new Scanner(System.in).nextLine();
+			
 			System.out.println("조회할 급여 값을 정수로 입력하세요");
 			int salInput = new Scanner(System.in).nextInt();
+			
 			String sql = "SELECT e.empno" 
                        + "     , e.ename" 
 					   + "     , e.job" 

@@ -47,7 +47,13 @@ public class MemberDelete {
 			pstmt = conn.prepareStatement(sql);
 			
 			// ? 맵핑
-		    pstmt.setString(1, "M010");
+			// Member 빈 객체 생성
+			// 수정자 메소드로 id, name, 필드 입력
+			// 아래 구문의 값들에는 접근자 메소드를
+		    Member member = new Member();
+		    member.setMemberId("M010");
+		    
+		    pstmt.setString(1, member.getMemberId());
 
 		    
 		    // 4. 쿼리 실행

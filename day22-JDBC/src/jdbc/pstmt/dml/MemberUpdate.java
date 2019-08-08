@@ -51,6 +51,8 @@ public class MemberUpdate {
 			pstmt = conn.prepareStatement(sql);
 			
 			// ? 맵핑
+			// Member 객체 생성 후
+			// 수정자
 		    pstmt.setString(1, "0000");
 		    pstmt.setString(2, "도술");
 		    pstmt.setInt(3, 12);

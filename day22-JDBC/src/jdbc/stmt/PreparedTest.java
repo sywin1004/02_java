@@ -24,6 +24,7 @@ public class PreparedTest {
 	
 	private static final String USER = "SCOTT";
 	private static final String PASSWORD = "TIGER";
+	private static final String PASSWORD2 = "0000";
 	
 	private static final String DRIVER = "oracle.jdbc.OracleDriver";
 	private static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";

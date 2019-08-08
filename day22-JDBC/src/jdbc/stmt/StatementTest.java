@@ -25,6 +25,7 @@ public class StatementTest {
 	
 	private static final String USER = "SCOTT";
 	private static final String PASSWORD = "TIGER";
+	private static final String PASSWORD2 = "0000";
 	
 	private static final String DRIVER = "oracle.jdbc.OracleDriver";
 	private static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -38,15 +39,16 @@ public class StatementTest {
 
 		try {
 
-			//			1. 드라이버 로드
+			// 1. 드라이버 로드
 			Class.forName(DRIVER);
 //			Class.forName(MYSQL_DRIVER);
 
-			//		2. 커넥션 맺기
+			// 2. 커넥션 맺기
 			connection = DriverManager.getConnection(URL, USER, PASSWORD);
 //			connection = MYSQL_DRIVER.getConnection(MYSQL_URL, USER, PASSWORD);
 			
-//		3. 쿼리 준비 
+
+			// 3. 쿼리 준비 
 			System.out.println("조회할 대상의 JOB 을 입력하세요");
 			System.out.println("CLERK, SLAESMAN, MANAGER, ANALYST, PRESIDENT");
 			String jobSales = new Scanner(System.in).nextLine();
@@ -65,7 +67,8 @@ public class StatementTest {
 
 			stmt = connection.createStatement();
 
-//		4. 쿼리 실행 
+
+			// 4. 쿼리 실행 
 			result = stmt.executeQuery(sql);
 
 			// 결과 셋의 컬럼이름 추출

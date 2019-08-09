@@ -23,20 +23,20 @@ import book.vo.Price;
  */
 public class MybatisBookShelf implements BookShelf {
 	
-	/**
-	 * Mybantis 의 커넥션인 SqlSession 을 생성하는
+	/** 
+	 * Mybatis 의 커넥션인 SqlSession 을 생성하는
 	 * SqlSessionFactory 변수 선언
-	 */
+	 * */
 	private SqlSessionFactory factory;
 	
-	public public MybatisBookShelf() {
+	public MybatisBookShelf() {
 		// factory 변수를 1개의 인스턴스가 유지되도록 생성
 		// MybatisClient 클래스의 싱글턴 패턴이 적용된
-		// getFactory() 스태틱 메소드를 사용한다
-		
+		// getFactory() 스태틱 메소드를 사용한다.
 		factory = getFactory();
 	}
 	
+
 	@Override
 	public int add(Book book) throws DuplicateException {
 		// TODO Auto-generated method stub
@@ -73,7 +73,7 @@ public class MybatisBookShelf implements BookShelf {
 		try {
 			books = session.selectList("book.mapper.getAllBooks");
 		} finally {
-			if(session != null) {
+			if (session != null) {
 				session.close();
 			}
 		}
@@ -100,41 +100,37 @@ public class MybatisBookShelf implements BookShelf {
 	}
 	
 	/**
-	 * 매개변수로 전달된 book 이
+	 * 매개변수로 전달된 book 이 
 	 * 이미 존재하는지 여부를 검사하는 메소드
 	 * 
-	 * 
 	 * @param book
-	 * @return true: 이미 존재하는경우
+	 * @return true : 이미 존재하는 경우
 	 *         false : 책 정보가 존재하지 않는 경우
 	 */
 	private boolean isExists(Book book) {
-		// 1. 필요한 객체 선언
+		// 1. 필요 객체 선언
 		boolean exists = false;
-		SqlSession session = null;
+		SqlSession session = null;		
 		
-		
-		// 2. session 객체 얻기
+		// 2.  session 객체 factory 에서 얻기
 		session = factory.openSession();
 		
 		// 3. session 에서 쿼리 수행
-		// 4. session 닫기
 		try {
 			Book foundBook = session.selectOne("book.mapper.isExists");
-			
 			
 			if (foundBook != null) {
 				exists = true;
 			}
 			
 		} finally {
-			if(session != null) {
+			// 4. session 닫기
+			if (session != null) {
 				session.close();
 			}
 		}
 		
-		return exists;
-		
+		return exists;	
 	}
 	
 }

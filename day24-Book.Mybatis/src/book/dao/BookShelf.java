@@ -5,6 +5,7 @@ import java.util.List;
 import book.exception.DuplicateException;
 import book.exception.NotFoundException;
 import book.vo.Book;
+import book.vo.Price;
 
 /**
  * 일반적인 책장의 기능을 정의하는 인터페이스
@@ -59,15 +60,14 @@ public interface BookShelf {
 	public abstract List<Book> getBooksByTitle(String title);
 	
 	/**
-	 * 책의 가격이 min ~ mas (포함)
+	 * 책의 가격이 min ~ max (포함) 
 	 * 사이인 책 목록을 조회하여 리턴
 	 * @param min
 	 * @param max
 	 * @return
 	 */
 	public abstract List<Book> getBooksByPrice(int min, int max);
-}
-
+	
 	/**
 	 * 내부에 가격검색 최저가, 최고가가
 	 * 함께 들어있는 Price 타입의 객체 하나를 받아서

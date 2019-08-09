@@ -17,6 +17,7 @@ import java.util.List;
 import book.exception.DuplicateException;
 import book.exception.NotFoundException;
 import book.vo.Book;
+import book.vo.Price;
 
 public class JdbcBookShelf implements BookShelf {
 
@@ -51,7 +52,8 @@ public class JdbcBookShelf implements BookShelf {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 
 			// 3. 쿼리 준비
-			String sql = "INSERT INTO BOOK b (b.sequence, b.isbn, b.title, b.author, b.company, b.total_page, b.price, b.quantity) " 
+			String sql = "INSERT INTO BOOK b (b.sequence, b.isbn, b.title, b.author"
+					   + "                  , b.company, b.total_page, b.price, b.quantity) " 
 					   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -417,6 +419,65 @@ public class JdbcBookShelf implements BookShelf {
 		return books;
 	}
 	
+	@Override
+	public List<Book> getBooksByPrice(Price price) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet result = null;
+		List<Book> books = new ArrayList<>();
+		
+		try {
+			// 2. 커넥션 맺기
+			conn = DriverManager.getConnection(URL, USER, PASSWORD);
+			
+			// 3. 쿼리 준비
+			String sql = "SELECT b.sequence" 
+					+ "     , b.isbn" 
+					+ "     , b.title" 
+					+ "     , b.author" 
+					+ "     , b.company" 
+					+ "     , b.total_page" 
+					+ "     , b.price" 
+					+ "     , b.quantity" 
+					+ "     , b.reg_date" 
+					+ "     , b.mod_date" 
+					+ "  FROM BOOK b" 
+					+ " WHERE b.price BETWEEN ? AND ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, price.getMin());
+			pstmt.setInt(2, price.getMax());
+			
+			// 4. 쿼리 실행
+			result = pstmt.executeQuery();
+			
+			// 5. 결과 처리
+			while (result.next()) {
+				Book book = new Book();
+				
+				book.setSequence(result.getInt(1));
+				book.setIsbn(result.getString(2));
+				book.setTitle(result.getString(3));
+				book.setAuthor(result.getString(4));
+				book.setCompany(result.getString(5));
+				book.setTotalPage(result.getInt(6));
+				book.setPrice(result.getInt(7));
+				book.setQuantity(result.getInt(8));
+				
+				books.add(book);
+			}
+			
+		} catch (SQLException e) {
+			System.err.println("SQL 구문 오류!" + e.getMessage());
+			e.printStackTrace();
+		} finally {
+			// 6. 자원 해제
+			closeResources(conn, pstmt, result);
+		}
+		
+		return books;
+	}
+
 	
 	/**
 	 * 전달된 book 정보가 데이터베이스 테이블에 이미 존재하는지 검사
@@ -436,9 +497,9 @@ public class JdbcBookShelf implements BookShelf {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			
 			// 3. 쿼리 준비
-			String sql = "SELECT b.sequence"
-					+ "  FROM BOOK b" 
-					+ " WHERE b.sequence = ?";
+			String sql = "SELECT b.sequence" 
+					   + "  FROM BOOK b" 
+					   + " WHERE b.sequence = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book.getSequence());

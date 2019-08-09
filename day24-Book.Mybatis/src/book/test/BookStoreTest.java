@@ -35,7 +35,8 @@ public class BookStoreTest {
 //		BookShelf bookShelf = getBookShelf("map");
 //		BookShelf bookShelf = getBookShelf("set");
 //		BookShelf bookShelf = getBookShelf("array");
-		BookShelf bookShelf = getBookShelf("jdbc");
+//		BookShelf bookShelf = getBookShelf("jdbc");
+		BookShelf bookShelf = getBookShelf("mybatis");
 		
 		// 3. 배열로 구성된 책장을 관리할 매니저를 고용
 		BookManager manager = new BookManager(bookShelf);
@@ -125,7 +126,7 @@ public class BookStoreTest {
 		
 		// 11. 가격 검색
 		System.out.println("\n 9. ===== 가격이 10000 ~ 11000 사이인 책 목록 확인 =====");
-		Price price = new Price();
+
 		
 		
 		// 반복 실행을 위하여 마지막에 모두 삭제

@@ -8,6 +8,7 @@ import book.exception.DuplicateException;
 import book.exception.NotFoundException;
 import book.view.Response;
 import book.vo.Book;
+import book.vo.Price;
 
 
 /**
@@ -193,6 +194,28 @@ public class BookManager {
 		
 		if (response != null)
 			response.response(bookShelf.getAllBooks());
+	}
+	
+	
+	public void getBooksByTitle(String title) {
+		response = getResp("list");
+		
+		if (response != null)
+			response.response(bookShelf.getBooksByTitle(title));
+	}
+	
+	public void getBooksByPrice(int min, int max) {
+		response = getResp("list");
+		
+		if (response != null)
+			response.response(bookShelf.getBooksByPrice(min, max));
+	}
+	
+	public void getBooksByPrice(Price price) {
+		response = getResp("list");
+		
+		if (response != null)
+			response.response(bookShelf.getBooksByPrice(price));
 	}
 
 }

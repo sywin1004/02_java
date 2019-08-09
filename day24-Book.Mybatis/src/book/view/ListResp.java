@@ -13,10 +13,13 @@ public class ListResp implements Response {
 	@Override
 	public void response(Object object) {
 
-		List<Book> books = (List<Book>)object;
-		for (Book book: books) {
-			System.out.println(book);
+		List<Book> books = (List<Book>) object;
+		if (books != null) {
+			for (Book book: books) {
+				System.out.println(book);
+			}
 		}
 	}
+
 
 }

@@ -71,7 +71,7 @@ public class MybatisBookShelf implements BookShelf {
 		session = factory.openSession();
 		
 		try {
-			books = session.selectList("book.mapper.getAllBooks");
+			books = session.selectList("book.mapper.BookMapper.getAllBooks");
 		} finally {
 			if (session != null) {
 				session.close();
@@ -117,7 +117,7 @@ public class MybatisBookShelf implements BookShelf {
 		
 		// 3. session 에서 쿼리 수행
 		try {
-			Book foundBook = session.selectOne("book.mapper.isExists");
+			Book foundBook = session.selectOne("book.mapper.BookMapper.isExists");
 			
 			if (foundBook != null) {
 				exists = true;

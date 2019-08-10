@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
+    <!--1, 2, 드라이버 로드 데이터베이스 접속 -->
     <!-- DB 접속 정보 변수 선언 -->
     <properties>
         <property name="url"         value="jdbc:oracle:thin:@//localhost:1521/XE"/>

@@ -2,8 +2,13 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+  <!-- 쿼리 준비 -->
   <!--  mybatis 에서 SQL 구문이 작성되는 순서 -->
-<mapper namespace="book.mapper">
+  <!-- mapper 파일의 namespace 이름 규칙
+       : XxxMapper.xml 파일이 있는 위치를 . 연산자로 연결한 패키지명.매퍼파일명 을 조합 -->
+<mapper namespace="book.mapper.BookMapper">
     <select id="isExists" resultType="Book" parameterType="Book">
         SELECT b.sequence   
           FROM BOOK b       
@@ -20,5 +25,6 @@
              , b.price
              , b.quantity
           FROM BOOK b
+         ORDER BY e.empno
     </select>
 </mapper>  

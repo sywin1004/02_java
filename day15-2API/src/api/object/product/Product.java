@@ -173,6 +173,11 @@ public class Product {
 		return String.format("제품코드 :%s 제품이름 :%s 가격 :%d 남은재고: %d", pcode, pname, price, quantity);
 	}
 	
+//	@Override ==> 재정의의 의도를 확인하기 위함
+//	public String toString(String option) {
+//		return String.format("제품코드 :%s 제품이름 :%s 가격 :%d 남은재고: %d", pcode, pname, price, quantity);
+//	}
+	
 	// 출력메소드
 	/**
 	 * 제품의 상태를 출력하는 메소드
@@ -180,6 +185,8 @@ public class Product {
 	public void print() {
 		System.out.println(this);
 	}
+	
+
 	
 	@Override
 	public boolean equals(Object obj) {

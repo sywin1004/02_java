@@ -59,7 +59,7 @@ public class MybatisEmpInsertTest {
 			
 			if (addCnt > 0) {
 				System.out.println("직원정보=" + emp);
-				System.out.printf("%d 행이 삽입되었습니다.%n");
+				System.out.printf("%d 행이 삽입되었습니다.%n", addCnt);
 			}
 			
 		} finally {

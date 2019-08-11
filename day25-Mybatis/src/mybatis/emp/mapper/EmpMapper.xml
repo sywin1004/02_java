@@ -16,8 +16,8 @@
     </select>
     <!-- emp 테이블에서 사번으로 1명의 정보 조회 -->
     <select id="selectEmp" parameterType="int" resultType="map">
-        SELECT e.empno "사원"
-             , e.ename "이름"
+        SELECT e.empno
+             , e.ename
              , e.job
              , e.hiredate
              , e.sal
@@ -46,5 +46,24 @@
           , #{job}
          )
     </insert>
+    
+    <update id="update" parameterType="map">
+    <!-- 직원 정보 1건을 수정하는 쿼리 -->
+        UPDATE EMP e
+		   SET e.ename = #{ENAME}
+		     , e.job = #{JOB}
+		     , e.mgr = #{MGR}
+		     , e.hiredate = #{HIREDATE}
+		     , e.sal = #{SAL}
+		     , e.comm = #{COMM}
+		     , e.deptno = #{DEPTNO}
+		 WHERE e.empno = #{EMPNO}
+    </update>
+    
+    <!-- EMP 테이블의 직원 정보 1건을 삭제하는 쿼리 -->
+    <delete id="delete" parameterType="int">
+        DELETE EMP e
+         WHERE e.empno = #{value}
+    </delete>
     
 </mapper>

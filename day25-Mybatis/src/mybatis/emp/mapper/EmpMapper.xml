@@ -110,20 +110,29 @@
 
 	<update id="update2" parameterType="Emp">
 		UPDATE EMP e
-		SET e.ename = #{ename}
-		, e.job = #{job}
-		, e.mgr = #{mgr}
-		, e.hiredate = #{hiredate}
-		, e.sal = #{sal}
-		, e.comm = #{comm}
-		, e.deptno = #{deptno}
-		WHERE e.empno = #{empno}
+		   SET e.ename = #{ename}
+		     , e.job = #{job}
+		     , e.mgr = #{mgr}
+		     , e.hiredate = TO_DATE(#{hiredate}, 'YYYY-MM-DD HH24:MI:SS') 
+		     , e.sal = #{sal}
+		     , e.comm = #{comm}
+		     , e.deptno = #{deptno}
+		 WHERE e.empno = #{empno}
 	</update>
 
 	<delete id="delete2" parameterType="Emp">
 		DELETE EMP e
 		WHERE e.empno = #{empno}
 	</delete>    
+    
+   
+    
+    
+    
+    
+    
+    
+    
     
     
 </mapper>

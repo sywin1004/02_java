@@ -66,4 +66,64 @@
          WHERE e.empno = #{value}
     </delete>
     
+    <!--윗쪽: Map 으로 프로퍼티 설정하는 쿼리 -->
+    
+    <!-- 아래: Emp 클래스로 프로퍼티 설정하는 쿼리 -->
+    <!-- mybatis-config.xml 파일에 typeAlias 등록 필요함 -->
+	<select id="selectAll2" resultType="Emp">
+		SELECT e.empno
+		, e.ename
+		, e.job
+		, e.hiredate
+		, e.sal
+		, e.comm
+		, e.deptno
+		FROM emp e
+	</select>
+
+	<select id="selectEmp2" resultType="Emp" parameterType="Emp">
+		SELECT e.empno
+		, e.ename
+		, e.job
+		, e.hiredate
+		, e.sal
+		, e.comm
+		, e.deptno
+		FROM emp e
+		WHERE e.empno = #{empno}
+	</select>
+    
+    <insert id="insert2" parameterType="Emp">
+	INSERT INTO EMP e
+	( e.empno
+	, e.ename
+	, e.hiredate
+	, e.job
+	)
+	VALUES
+	( #{empno}
+	, #{ename}
+	, sysdate
+	, #{job}
+	)
+</insert>
+
+	<update id="update2" parameterType="Emp">
+		UPDATE EMP e
+		SET e.ename = #{ename}
+		, e.job = #{job}
+		, e.mgr = #{mgr}
+		, e.hiredate = #{hiredate}
+		, e.sal = #{sal}
+		, e.comm = #{comm}
+		, e.deptno = #{deptno}
+		WHERE e.empno = #{empno}
+	</update>
+
+	<delete id="delete2" parameterType="Emp">
+		DELETE EMP e
+		WHERE e.empno = #{empno}
+	</delete>    
+    
+    
 </mapper>

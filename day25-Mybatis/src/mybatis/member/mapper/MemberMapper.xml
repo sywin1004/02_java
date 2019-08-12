@@ -59,7 +59,7 @@
     <!-- member 테이블 1명 update 쿼리 -->
     <update id="updateMember" parameterType="Member">
         UPDATE MEMBER m
-		     , m.member_name = #{memberName}
+           SET m.member_name = #{memberName}
 		     , m.phone       =      #{phone}
 		     , m.reg_date    = TO_DATE(#{regDate}, 'YYYY-MM-DD HH24:MI:SS')
 		     , m.address     = #{address}
@@ -71,7 +71,7 @@
     
     <!-- member 테이블 1명 delete 쿼리 -->
     <delete id="deleteMember" parameterType="String">
-        DELETE TABLE MEMBER m
+        DELETE MEMBER m
          WHERE m.member_id = #{memberId}
     </delete>
     

@@ -12,15 +12,15 @@ public class InsertMemberTest {
 		// 1. 팩토리 받기
 		SqlSessionFactory factory = MybatisClient.getFactory();
 		// 2. 세션받기
-		SqlSession session = factory.openSession();
+		SqlSession session = factory.openSession(true);
 		
 		try {
 			// 3. 쿼리실행 결과받기
 			Member member = new Member();
+			
 			member.setMemberId("M010");
 			member.setMemberName("에어컨");
 			member.setPhone("6598");
-			member.setRegDate("2018-8-7");
 			member.setAddress("선문대");
 			member.setMajor("기계공학");
 			member.setBirthMonth(8);

@@ -17,7 +17,7 @@ public class UpdateMemberTest {
 		// 1. 팩토리 얻기
 		SqlSessionFactory factory = MybatisClient.getFactory();
 		// 2. 세션 얻기
-		SqlSession session = factory.openSession();
+		SqlSession session = factory.openSession(true);
 		
 		try {
 			// 쿼리 실행, 결과받기
@@ -25,7 +25,7 @@ public class UpdateMemberTest {
 			Member inputMember = new Member();
 			inputMember.setMemberId("M010");
 			
-			Member member = session.selectOne("mybatis.member.mapper.MemberMapper.selectMember", "M010");
+			Member member = session.selectOne("mybatis.member.mapper.MemberMapper.selectMember", inputMember);
 			
 			System.out.println("수정 전 정보");
 			
@@ -33,18 +33,29 @@ public class UpdateMemberTest {
 			
 			// 수정실행
 			
+			member.setAddress("충남");
 			member.setMajor("컴퓨터공학");
 			member.setGender("F");
+			
+			
+			int rmCnt = session.update("mybatis.member.mapper.MemberMapper.updateMember", member);
+			
+			// 몇건 수정 리턴
+			if (rmCnt > 0) {
+				System.out.printf("%s의 정보가%d 건 수정되었습니다", member.getMemberId(), rmCnt);
+			}
 			
 			// 수정 후 결과 출력
 			
 			Member newMember = new Member();
 			newMember.setMemberId("M010");
 			
-			Member setMember = session.selectOne("mybatis.member.mapper.MemberMapper.selectMember", "M010");
+			Member setMember = session.selectOne("mybatis.member.mapper.MemberMapper.selectMember", newMember);
+			
+			
 			
 			System.out.println("수정 후 정보");
-			System.out.println("setMember");
+			System.out.println(setMember);
 			
 			
 			

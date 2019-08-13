@@ -78,27 +78,22 @@ public class ProductDao {
 	}	
 	//    4)  updateProduct(PrimaryKey pk, Product product) : int
 	//    	조회 쿼리 아이디 : updateProduct
-	public int updateProduct(PrimaryKey pk, Product product) {
+	public int updateProduct(Product product) {
 		SqlSession session = factory.openSession(true);
+		
 		Product updateProduct = new Product();
 		int udpCnt = -1;
 		
 		try {						
-			udpCnt = session.update("product.mapper.ProductMapper.updateProduct", pk);
+			udpCnt = udpCnt = session.update("product.mapper.ProductMapper.updateProduct", updateProduct);
 			
-			if (udpCnt > 0) {
-				updateProduct.setName(product.getName());
-				updateProduct.setPrice(product.getPrice());
-				updateProduct.setQuantity(product.getQuantity());
-				updateProduct.setModDate(product.getModDate());
-			}
 		} finally {
 			if (session != null) {
 				session.close();
 			}
 		}
-		
-		return udpCnt;
+			return udpCnt;
+			
 		
 	}
 	//    5)  deleteProduct(PrimaryKey pk) : int

@@ -50,7 +50,7 @@
 	<!--     수정일은 현재 시스템 시간으로 업데이트 -->
 	<!--     가격을 10% 하락 가격으로 업데이트 하는 것 아님, 그냥 변수처리 하십시오. -->
 	<!--     id="updateProduct" parameterType="PrimaryKey" -->
-    <update id="updateProduct" parameterType="PrimaryKey">
+    <update id="updateProduct" parameterType="Product">
         UPDATE product p
 		   SET p.name #{name}
 		     , p.price #{price}

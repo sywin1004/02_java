@@ -139,7 +139,7 @@ public class ProductTest {
 			int setCnt = 0;
 			// TODO : dao 객체에 updateProduct(Product product) 메소드 호출하여 5건의 데이터에 대해 업데이트 실행
 			//        updateProduct 리턴값이 0보다 크면 "몇 건이 수정되었습니다." 출력
-			setCnt = dao.updateProduct(product.getCode(), product);
+			setCnt = dao.updateProduct(product);
 			if(setCnt > 0) {
 				System.out.printf("%d 건이 수정되었습니다.", setCnt);
 				
@@ -147,12 +147,12 @@ public class ProductTest {
 		}
 		
 		
-		// 검색 테스트 -----------------------------------------------------------------------
-		// TODO : 검색어 "샌들" 로 제품목록 검색
-		List<Product> sandles = dao.selectProducts("샌들");
-		for (Product product: sandles) {
-			System.out.println(product);
-		}
+//		// 검색 테스트 -----------------------------------------------------------------------
+//		// TODO : 검색어 "샌들" 로 제품목록 검색
+//		List<Product> sandles = dao.selectProducts("샌들");
+//		for (Product product: sandles) {
+//			System.out.println(product);
+//		}
 		
 		
 //		// TODO : 가격 최저, 최고 20000 ~ 50000 을 가지는 Price 객체를 생성하여 가격 검색

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+          PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- mapper 의 namespace : 패키지명.패키지명.파일명 으로 줄 것 -->
+<mapper namespace="product.mapper.ProductMapper">
+	<!-- (1) 전체 컬럼 전체목록 조회 쿼리 작성 -->
+	<!--     id="selectAllProducts" resultType="Product" -->
+	<select id="selectAllproducts" resultType="Product">
+	   SELECT p.code
+		    , p.name
+		    , p.price
+		    , p.quantity
+		    , p.reg_date
+		    , p.mod_date
+		 FROM product p
+	</select>
+	     
+	<!-- (2) PK 를 걸어서 1개의 제품정보 전체 컬럼 조회 쿼리 작성 -->
+	<!--     id="selectProduct" parameterType="PrimaryKey" resultType="Product" -->
+	<select id="selectProduct" parameterType="PrimaryKey" resultType="Product">
+	    SELECT p.code
+		     , p.name
+		     , p.price
+		     , p.quantity
+		     , p.reg_date
+		     , p.mod_date
+		  FROM product p
+		 WHERE p.code = #{code}
+	</select>
+	     
+	<!-- (3) 1개의 제품 정보 삽입하는 INSERT 쿼리 작성 -->
+	<!--     삽입 대상 컬럼 : code, name, price, quantity -->
+	<!--     id="insertProduct" parameterType="Product" -->
+	<insert id="insertProduct" parameterType="Product">
+	   Insert INTO product p ( p.code
+	                         , p.name
+	                         , p.price
+	                         , p.quantity)
+                      VALUES ( #{code}
+                             , #{name}
+                             , #{price}
+                             , #{quantity})
+	</insert>
+	
+	<!-- (4) 1개의 제품 정보 수정하는 UPDATE 쿼리 작성,  -->
+	<!--     PK 걸어서 수정 -->
+	<!--     수정 대상 컬럼 : name, price, quantity, mod_date -->
+	<!--     수정일은 현재 시스템 시간으로 업데이트 -->
+	<!--     가격을 10% 하락 가격으로 업데이트 하는 것 아님, 그냥 변수처리 하십시오. -->
+	<!--     id="updateProduct" parameterType="PrimaryKey" -->
+    <update id="updateProduct" parameterType="PrimaryKey">
+        UPDATE product p
+		   SET p.name #{name}
+		     , p.price #{price}
+		     , p.quantity #{quantity}
+		     , p.mod_date TO_DATE(#{modDate}, 'YYYY-MM-DD HH24:MI:SS')
+		 WHERE p.code #{code}
+    </update>
+	     
+	<!-- (5) 1개의 제품 정보 삭제하는 DELETE 쿼리 작성, -->
+	<!--     PK 걸어서 삭제 -->
+	<!--     id="deleteProduct" parameterType="PrimaryKey" -->
+    <delete id="deleteProduct" parameterType="PrimaryKey">
+        DELETE product p
+         WHERE p.code #{code} 
+    </delete>
+	     
+	<!-- (6) 제품명(name)에 특정 검색어가 들어가는 제품목록  -->
+	<!--     전체 컬럼 조회쿼리 작성 -->
+	<!--     id="selectByName" parameterType="string" -->
+    <select id="selectByname" parameterType="String">
+        SELECT p.code
+		     , p.name
+		     , p.price
+		     , p.quantity
+		     , p.reg_date
+		     , p.mod_date
+		  FROM product p
+		 WHERE p.name LIKE '%#{value}%'
+    </select>
+	<!-- 7 ~ 9 번 작성시 주의점. -->
+	<!-- xml 문서에는 SQL 비교 연산자인 <, >, <=, >= 기호를  -->
+	<!-- 작성할 수 없음                              -->
+	<!-- 따라서 가격 비교 연산에 사용되는 <, <= 또는 >, >= 
+	     연산자를 다음과 같이 작성할 것  -->
+	<!-- <![CDATA[ > ]]> , <![CDATA[ < ]]>   
+	     WHERE price <![CDATA[ > ]]> #{value}                      -->
+	     
+	<!-- (7) 가격이 두 값 사이인 제품목록 전체 컬럼 조회쿼리 작성 -->
+	<!--     id="selectByPrice" prarameterType="Price" resultType="Product" -->
+    <select id="selectByPrice" parameterType="Price" resultType="Product">
+        SELECT p.code
+		     , p.code
+		     , p.price
+		     , p.quantity
+		     , p.reg_date
+		     , p.mod_date
+		  FROM product p
+		 WHERE p.price BETWEEN #{min} AND #{max}
+    </select>
+	     
+	<!-- (8) 가격이 어떤 값 이상인 제품목록 전체컬럼 조회 쿼리 작성 -->
+	<!--     id="selectExpensiveThan" parameterType="int" resultType="Product" -->
+    <select id="selectExpensiveThan" parameterType="int" resultType="Product">
+        SELECT p.code
+		     , p.code
+		     , p.price
+		     , p.quantity
+		     , p.reg_date
+		     , p.mod_date
+		  FROM product p
+		 WHERE p.price <![CDATA[>=]]> #{value}
+    </select>
+	     
+	<!-- (9) 가격이 어떤 값 이하인 제품목록 전체컬럼 조회 쿼리 작성 -->
+	<!--     id="selectCheapThan" parameterType="int" resultType="Product" -->
+    <select id="selectCheapThan" parameterType="int" resultType="Product">
+         SELECT p.code
+             , p.code
+             , p.price
+             , p.quantity
+             , p.reg_date
+             , p.mod_date
+          FROM product p
+         WHERE p.price <![CDATA[<=]]> #{value}
+    </select>
+	     
+	<!-- (10) 가장 비싼 가격의 제품목록 전체컬럼 조회 쿼리 작성 -->
+	<!--    id="selectMostExpensive" resultType="Product" -->
+
+	     
+	<!-- (11) 재고가 가장 많은 제품목록 전체컬럼 조회 쿼리 작성 -->
+	<!--    id="selectMostQuantity" resultType="Product"  -->
+	
+	
+</mapper>  

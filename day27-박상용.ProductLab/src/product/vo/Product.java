@@ -107,7 +107,7 @@ public class Product {
 	// toString() 재정의
 	@Override
 	public String toString() {
-		return "제품정보 [code=" + code + ", name=" + name + ", number=" + price + ", quantity=" + quantity
+		return "제품정보 [code=" + code + ", name=" + name + ", price=" + price + ", quantity=" + quantity
 				+ ", regDate=" + regDate + ", modDate=" + modDate + "]";
 	}
 	

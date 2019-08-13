@@ -52,11 +52,11 @@
 	<!--     id="updateProduct" parameterType="PrimaryKey" -->
     <update id="updateProduct" parameterType="Product">
         UPDATE product p
-		   SET p.name #{name}
-		     , p.price #{price}
-		     , p.quantity #{quantity}
-		     , p.mod_date TO_DATE(#{modDate}, 'YYYY-MM-DD HH24:MI:SS')
-		 WHERE p.code #{code}
+		   SET p.name = #{name}
+		     , p.price = #{price}
+		     , p.quantity = #{quantity}
+		     , p.mod_date = sysdate
+		 WHERE p.code = #{code}
     </update>
 	     
 	<!-- (5) 1개의 제품 정보 삭제하는 DELETE 쿼리 작성, -->
@@ -64,13 +64,13 @@
 	<!--     id="deleteProduct" parameterType="PrimaryKey" -->
     <delete id="deleteProduct" parameterType="PrimaryKey">
         DELETE product p
-         WHERE p.code #{code} 
+         WHERE p.code = #{code} 
     </delete>
 	     
 	<!-- (6) 제품명(name)에 특정 검색어가 들어가는 제품목록  -->
 	<!--     전체 컬럼 조회쿼리 작성 -->
 	<!--     id="selectByName" parameterType="string" -->
-    <select id="selectByname" parameterType="String">
+    <select id="selectByName" parameterType="String" resultType="Product">
         SELECT p.code
 		     , p.name
 		     , p.price
@@ -78,7 +78,7 @@
 		     , p.reg_date
 		     , p.mod_date
 		  FROM product p
-		 WHERE p.name LIKE '%#{value}%'
+		 WHERE p.name LIKE #{value}
     </select>
 	<!-- 7 ~ 9 번 작성시 주의점. -->
 	<!-- xml 문서에는 SQL 비교 연산자인 <, >, <=, >= 기호를  -->
@@ -129,10 +129,30 @@
 	     
 	<!-- (10) 가장 비싼 가격의 제품목록 전체컬럼 조회 쿼리 작성 -->
 	<!--    id="selectMostExpensive" resultType="Product" -->
-
+    <select id="selectMostExpensive" resultType="Product">
+        SELECT p.code
+		     , p.name
+		     , p.price
+		     , p.quantity
+		     , p.reg_date
+		     , p.mod_date
+		  FROM product p
+		 WHERE p.price >= (SELECT MAX(p.price)
+		                      FROM product p)
+    </select>
 	     
 	<!-- (11) 재고가 가장 많은 제품목록 전체컬럼 조회 쿼리 작성 -->
 	<!--    id="selectMostQuantity" resultType="Product"  -->
-	
+	<select id="selectMostQuantity" resultType="Product">
+	   SELECT p.code
+             , p.name
+             , p.price
+             , p.quantity
+             , p.reg_date
+             , p.mod_date
+          FROM product p
+         WHERE p.price >= (SELECT MAX(p.quantity)
+                              FROM product p)
+	</select>
 	
 </mapper>  

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import product.dao.ProductDao;
+import product.vo.Price;
 import product.vo.PrimaryKey;
 import product.vo.Product;
 
@@ -63,17 +64,23 @@ public class ProductTest {
 		// ProductDao 객체 선언 & 초기화
 		ProductDao dao = new ProductDao();
 		
-		for (Product product: productInputs) {			
-//			System.out.println(product);
-			int addCnt = dao.insertProduct(product);
-			
-			if (addCnt > 0) {
-				System.out.printf("%d 건이 등록되었습니다.%n", addCnt);
-			}
-			
-		}
+//		for (Product product: productInputs) {			
+////			System.out.println(product);
+//			int addCnt = dao.insertProduct(product);
+//			
+//			if (addCnt > 0) {
+//				System.out.printf("%d 건이 등록되었습니다.%n", addCnt);
+//			}
+//			
+//		}
 		
-
+		// 수정 전 정보 출력
+//		for(Product product: productInputs) {
+//			System.out.println(product);
+//		}
+		
+		
+		
 		// 수정 테스트 객체 생성-------------------------------------------------------------------------------
 		// TODO : dao 객체에 selectProdudct(PrimaryKey) 를 호출하여 P001 코드 제품 검색;
 		//        selectProdudct() 메소드 파라미터로 넘기는 PrimaryKey 타입의 인스턴스 내부 멤버변수인 code 값에
@@ -105,6 +112,7 @@ public class ProductTest {
 		//        P003 을 가지도록 생성하여 그 인스턴스를 넘기도록 함		
 		pk.setCode("p003");
 		Product p003Mod = dao.selectProduct(pk);
+		
 		p003Mod.setName("NIKE 탄준 샌들");
 		p003Mod.setPrice((int) (p003Mod.getPrice() * 0.9));
 		p003Mod.setQuantity(3);
@@ -114,6 +122,7 @@ public class ProductTest {
 		//        P004 을 가지도록 생성하여 그 인스턴스를 넘기도록 함
 		pk.setCode("p004");
 		Product p004Mod = dao.selectProduct(pk);
+		
 		p004Mod.setName("라이트라이드 샌들 (WOMAN)");
 		p004Mod.setPrice((int) (p004Mod.getPrice() * 0.9));
 		p004Mod.setQuantity(15);
@@ -121,8 +130,9 @@ public class ProductTest {
 		// TODO : dao 객체에 selectProdudct(PrimaryKey) 를 호출하여 P005 코드 제품 검색;
 		//        selectProdudct() 메소드 파라미터로 넘기는 PrimaryKey 타입의 인스턴스 내부 멤버변수인 code 값에
 		//        P005 을 가지도록 생성하여 그 인스턴스를 넘기도록 함
-		pk.setCode("005");
+		pk.setCode("p005");
 		Product p005Mod = dao.selectProduct(pk);
+		
 		p005Mod.setName("지제 (WOMAN)");
 		p005Mod.setPrice((int) (p005Mod.getPrice() * 0.9));
 		p005Mod.setQuantity(3);
@@ -135,49 +145,54 @@ public class ProductTest {
 		productUpdates.add(p004Mod);
 		productUpdates.add(p005Mod);
 		
-		for (Product product: productUpdates) {
-			int setCnt = 0;
-			// TODO : dao 객체에 updateProduct(Product product) 메소드 호출하여 5건의 데이터에 대해 업데이트 실행
-			//        updateProduct 리턴값이 0보다 크면 "몇 건이 수정되었습니다." 출력
-			setCnt = dao.updateProduct(product);
-			if(setCnt > 0) {
-				System.out.printf("%d 건이 수정되었습니다.", setCnt);
-				
-			}
-		}
+//		for (Product product: productUpdates) {
+//			int setCnt;
+//			// TODO : dao 객체에 updateProduct(Product product) 메소드 호출하여 5건의 데이터에 대해 업데이트 실행
+//			//        updateProduct 리턴값이 0보다 크면 "몇 건이 수정되었습니다." 출력
+//			setCnt = dao.updateProduct(product);
+//			if(setCnt > 0) {
+//				System.out.printf("%d 건이 수정되었습니다.%n", setCnt);
+//				
+//			}
+//		}
 		
 		
-//		// 검색 테스트 -----------------------------------------------------------------------
-//		// TODO : 검색어 "샌들" 로 제품목록 검색
-//		List<Product> sandles = dao.selectProducts("샌들");
+		// 검색 테스트 -----------------------------------------------------------------------
+		// TODO : 검색어 "샌들" 로 제품목록 검색
+//		List<Product> sandles = dao.selectProducts("%샌들%");
 //		for (Product product: sandles) {
 //			System.out.println(product);
 //		}
 		
 		
 //		// TODO : 가격 최저, 최고 20000 ~ 50000 을 가지는 Price 객체를 생성하여 가격 검색
-//		List<Product> priceProducts = dao.selectProducts(Price);
+//		Price price = new Price();
+//		price.setMin(20000);
+//		price.setMax(50000);
+//		List<Product> priceProducts = dao.selectProducts(price);
 //		for (Product product: priceProducts) {
 //			System.out.println(product);
 //		}
 //		
 //		// TODO : 가격 40000 이상 제품 가격 검색
-//		List<Product> expensivesThan = // TODO : dao 객체를 사용하여 가격 이상 검색 완성;
+//		int min = 40000;
+//		List<Product> expensivesThan = dao.selectProductsByMinPrice(min);
 //		for (Product product: expensivesThan) {
 //			System.out.println(product);			
 //		}
 //		
 //		// TODO : 가격 50000 이하 제품 가격 검색
-//		List<Product> cheaps = // TODO : dao 객체를 사용하여 가격 이하 검색 완성;
+//		int max = 50000;
+//		List<Product> cheaps = dao.selectProductsByMaxPrice(max);
 //		for (Product product: cheaps) {
 //			System.out.println(product);			
 //		}
 //		
 //		// TODO : 가장 비싼 제품목록 검색
-//		List<Product> mostExpensives = // TODO : dao 객체를 사용하여 가장 비싼 검색 완성;
-//		for (Product product: mostExpensives) {
-//			System.out.println(product);			
-//		}
+		List<Product> mostExpensives = dao.selectMostExpensive();
+		for (Product product: mostExpensives) {
+			System.out.println(product);			
+		}
 //		
 //		// TODO : 가장 재고 많은 제품목록 검색
 //		List<Product> mostQuantities = // TODO : dao 객체를 사용하여 가장 재고 많은 검색 완성;

@@ -80,12 +80,10 @@ public class ProductDao {
 	//    	조회 쿼리 아이디 : updateProduct
 	public int updateProduct(Product product) {
 		SqlSession session = factory.openSession(true);
-		
-		Product updateProduct = new Product();
 		int udpCnt = -1;
 		
 		try {						
-			udpCnt = udpCnt = session.update("product.mapper.ProductMapper.updateProduct", updateProduct);
+			udpCnt = session.update("product.mapper.ProductMapper.updateProduct", product);
 			
 		} finally {
 			if (session != null) {
@@ -193,7 +191,27 @@ public class ProductDao {
 	}
 	//    10) selectMostExpensive() : List<Product>
 	//    	조회 쿼리 아이디 : selectMostExpensive
-	    	
+	public List<Product> selectMostExpensive() {
+		SqlSession session = factory.openSession(true);
+		List<Product> mostExpensive = new ArrayList<Product>();
+		Product product = new Product();
+		
+		try {
+			
+			mostExpensive = session.selectList("product.mapper.ProductMapper.selectMostExpensive", product);
+			
+		} finally {
+			if(session != null) {
+				session.close();
+			}
+		}
+		
+		return mostExpensive;
+		
+		
+		
+		
+	}
 	//    11) selectMostAmount() : List<Product>
 	//    	조회 쿼리 아이디 : selectMostQuantity
 	

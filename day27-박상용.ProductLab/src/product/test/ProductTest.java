@@ -103,6 +103,7 @@ public class ProductTest {
 		//        P002 을 가지도록 생성하여 그 인스턴스를 넘기도록 함
 		pk.setCode("p002");
 		Product p002Mod = dao.selectProduct(pk);
+		
 		p002Mod.setName("리복 로얄 테크큐 티(L)");
 		p002Mod.setPrice((int) (p002Mod.getPrice() * 0.9));
 		p002Mod.setQuantity(20);
@@ -173,7 +174,7 @@ public class ProductTest {
 //		for (Product product: priceProducts) {
 //			System.out.println(product);
 //		}
-//		
+		
 //		// TODO : 가격 40000 이상 제품 가격 검색
 //		int min = 40000;
 //		List<Product> expensivesThan = dao.selectProductsByMinPrice(min);
@@ -189,34 +190,37 @@ public class ProductTest {
 //		}
 //		
 //		// TODO : 가장 비싼 제품목록 검색
-		List<Product> mostExpensives = dao.selectMostExpensive();
-		for (Product product: mostExpensives) {
-			System.out.println(product);			
-		}
-//		
+//		List<Product> mostExpensives = dao.selectMostExpensive();
+//		for (Product product: mostExpensives) {
+//			System.out.println(product);			
+//		}
+		
 //		// TODO : 가장 재고 많은 제품목록 검색
-//		List<Product> mostQuantities = // TODO : dao 객체를 사용하여 가장 재고 많은 검색 완성;
+//		List<Product> mostQuantities = dao.selectMostAmount();
 //		for (Product product: mostQuantities) {
 //			System.out.println(product);			
 //		}
 //		
 //		
-//		// 삭제 테스트 -----------------------------------------------------------------------
-//		// TODO : PrimaryKey 타입의 인스턴스 내부 멤버변수인 code 값에
-//		//        P005 을 가지도록 생성
-//		
-//		// TODO : dao 에 deleteProduct(PriamryKey pk) 메소드를 호출하며
-//		//        위에서 생성한 PrimaryKey 인스턴스 전달
-//		
-//		
-//		
-//		
-//		// 삭제 -----------------------------------------------------------------------
-//		// TODO : P005 가 삭제된 전체 목록 조회
-//		List<Product> allProducts = // TODO : dao 객체를 사용하여 전체 목록 검색 완성;
-//		for (Product product: allProducts) {
-//			System.out.println(product);			
-//		}
+		
+		// 삭제 테스트 -----------------------------------------------------------------------
+		// TODO : PrimaryKey 타입의 인스턴스 내부 멤버변수인 code 값에
+		//        P005 을 가지도록 생성
+		pk.setCode("p005");
+		
+		
+		// TODO : dao 에 deleteProduct(PriamryKey pk) 메소드를 호출하며
+		//        위에서 생성한 PrimaryKey 인스턴스 전달
+		dao.deleteProduct(pk);
+		
+		
+		
+		// 삭제 -----------------------------------------------------------------------
+		// TODO : P005 가 삭제된 전체 목록 조회
+		List<Product> allProducts = dao.selectProducts();
+		for (Product product: allProducts) {
+			System.out.println(product);			
+		}
 		
 				
 	}

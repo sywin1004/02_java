@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="mybatis.emp.mapper.EmpMapper">
+    <select id="selectAll" resultType="map">
+        SELECT e.empno
+             , e.ename
+             , e.job
+             , e.hiredate
+             , e.sal
+             , e.comm
+             , e.deptno
+          FROM emp e
+    </select>
+    <!-- emp 테이블에서 사번으로 1명의 정보 조회 -->
+    <select id="selectEmp" parameterType="int" resultType="map">
+        SELECT e.empno
+             , e.ename
+             , e.job
+             , e.hiredate
+             , e.sal
+             , e.comm
+             , e.deptno
+          FROM emp e
+         WHERE e.empno = #{value}
+         <!-- #{value} 는 prepared 에서 ? 와 같은 역할 -->
+         <!-- 쿼리 실행시 전달 값이 1개 이며 -->
+         <!-- 기본형 값/ String 값 일 때만 사용가능한 -->
+         <!-- mybatis 프레임워크 자체 변수 -->
+    </select>
+    
+    <!-- Emp 테이블에 직원 정보 1건 입력 -->
+    <insert id="insert" parameterType="map">
+        INSERT INTO EMP e
+          ( e.empno
+          , e.ename
+          , e.hiredate
+          , e.job
+           )
+        VALUES
+          ( #{empno}
+          , #{ename}
+          , sysdate
+          , #{job}
+         )
+    </insert>
+    
+    <update id="update" parameterType="map">
+    <!-- 직원 정보 1건을 수정하는 쿼리 -->
+        UPDATE EMP e
+		   SET e.ename = #{ENAME}
+		     , e.job = #{JOB}
+		     , e.mgr = #{MGR}
+		     , e.hiredate = #{HIREDATE}
+		     , e.sal = #{SAL}
+		     , e.comm = #{COMM}
+		     , e.deptno = #{DEPTNO}
+		 WHERE e.empno = #{EMPNO}
+    </update>
+    
+    <!-- EMP 테이블의 직원 정보 1건을 삭제하는 쿼리 -->
+    <delete id="delete" parameterType="int">
+        DELETE EMP e
+         WHERE e.empno = #{value}
+    </delete>
+    
+    <!--윗쪽: Map 으로 프로퍼티 설정하는 쿼리 -->
+    
+    <!-- 아래: Emp 클래스로 프로퍼티 설정하는 쿼리 -->
+    
+    
+    <!-- mybatis-config.xml 파일에 typeAlias 등록 필요함 -->
+	<select id="selectAll2" resultType="Emp">
+		SELECT e.empno
+		, e.ename
+		, e.job
+		, e.hiredate
+		, e.sal
+		, e.comm
+		, e.deptno
+		FROM emp e
+	</select>
+
+	<select id="selectEmp2" resultType="Emp" parameterType="Emp">
+		SELECT e.empno
+		, e.ename
+		, e.job
+		, e.hiredate
+		, e.sal
+		, e.comm
+		, e.deptno
+		FROM emp e
+		WHERE e.empno = #{empno}
+	</select>
+    
+    <insert id="insert2" parameterType="Emp">
+	INSERT INTO EMP e
+	( e.empno
+	, e.ename
+	, e.hiredate
+	, e.job
+	)
+	VALUES
+	( #{empno}
+	, #{ename}
+	, sysdate
+	, #{job}
+	)
+</insert>
+
+	<update id="update2" parameterType="Emp">
+		UPDATE EMP e
+		   SET e.ename = #{ename}
+		     , e.job = #{job}
+		     , e.mgr = #{mgr}
+		     , e.hiredate = TO_DATE(#{hiredate}, 'YYYY-MM-DD HH24:MI:SS') 
+		     , e.sal = #{sal}
+		     , e.comm = #{comm}
+		     , e.deptno = #{deptno}
+		 WHERE e.empno = #{empno}
+	</update>
+
+	<delete id="delete2" parameterType="Emp">
+		DELETE EMP e
+		WHERE e.empno = #{empno}
+	</delete>    
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</mapper>

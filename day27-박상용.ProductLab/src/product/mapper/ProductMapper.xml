@@ -138,7 +138,7 @@
 		     , p.mod_date
 		  FROM product p
 		 WHERE p.price >= (SELECT MAX(p.price)
-		                      FROM product p)
+		                     FROM product p)
     </select>
 	     
 	<!-- (11) 재고가 가장 많은 제품목록 전체컬럼 조회 쿼리 작성 -->
@@ -151,8 +151,8 @@
              , p.reg_date
              , p.mod_date
           FROM product p
-         WHERE p.price >= (SELECT MAX(p.quantity)
-                              FROM product p)
+         WHERE p.quantity >= (SELECT MAX(p.quantity)
+                                FROM product p)
 	</select>
 	
 </mapper>  

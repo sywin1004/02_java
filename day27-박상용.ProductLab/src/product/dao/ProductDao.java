@@ -214,5 +214,20 @@ public class ProductDao {
 	}
 	//    11) selectMostAmount() : List<Product>
 	//    	조회 쿼리 아이디 : selectMostQuantity
-	
+	public List<Product> selectMostAmount(){
+		// 세션얻기, 필요한 변수 선언
+		SqlSession session = factory.openSession(true);
+		List<Product> mostQuantity = new ArrayList<Product>();
+		
+		try {
+			mostQuantity = session.selectList("product.mapper.ProductMapper.selectMostQuantity");
+		} finally {
+			if(session != null) {
+				session.close();
+			}
+		}
+		
+		return mostQuantity;
+		
+	}
 }

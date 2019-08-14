@@ -48,6 +48,7 @@ public class MybatisEmpUpdateTest3 {
 			inputEmp.setEmpno(1111);
 //			Emp emp = session.selectOne("mybatis.emp.mapper.EmpMapper.selectEmp2", inputEmp);
 			
+			
 			// 맵 객체인 emp 에 담긴 내용
 			// 1111 박준석 SALESMAN
 			System.out.println(emp);
@@ -64,7 +65,7 @@ public class MybatisEmpUpdateTest3 {
 			// mybatis.emp.mapper.EmpMapper.update
 //			int setCnt = session.update("mybatis.emp.mapper.EmpMapper.update2", emp);
 			int setCnt;
-			setCnt = mapper = session.update(emp.getEmpno()));
+			setCnt = mapper.update2(emp);
 			
 			if(setCnt > 0) {
 				System.out.printf("%d 직원의 정보가 %d건 수정되었습니다%n", emp.getEmpno(), setCnt);

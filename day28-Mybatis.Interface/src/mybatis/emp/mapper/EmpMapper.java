@@ -17,6 +17,23 @@ import mybatis.emp.vo.Emp;
 public interface EmpMapper {
 	
 	/**
+	 * 1건 혹은 전체 조회결과를 내는 동적쿼리를 수행하는 메소드
+	 * @param emp
+	 * @return
+	 */
+	public abstract List<Emp> select(Emp emp);
+	
+	/**
+	 * keyword 에 의한 이름 유사 검색 조회 결과를 내거나
+	 * keyword 가 생략(null) 인 경우 전체 검색 결과를 내는
+	 * 동적쿼리를 수행하는 메소드
+	 * @param keyword
+	 * @return
+	 */
+	public abstract List<Emp> selectByName(String keyword);
+	
+	
+	/**
 	 * Emp 전체 목록 조회
 	 * Emp 한 사람의 정보를 Map 형태로 만들어서
 	 * 그 Map의 목록(List) 으로 리턴하는 메소드

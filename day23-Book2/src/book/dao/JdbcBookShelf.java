@@ -318,10 +318,10 @@ public class JdbcBookShelf implements BookShelf {
 					+ "     , b.reg_date" 
 					+ "     , b.mod_date" 
 					+ "  FROM BOOK b" 
-					+ " WHERE b.title LIKE ? ";
+					+ " WHERE b.title LIKE '%' || ? || '%' ";
 			
 			pstmt = conn.prepareStatement(sql);			
-			pstmt.setString(1, String.format("%%%s%%", title));
+			pstmt.setString(1, String.format("%s", title));
 			// 위의 String.format 구문은 아래의 구문과 동일함
 //			pstmt.setString(1, "%" + title + "%");
 			

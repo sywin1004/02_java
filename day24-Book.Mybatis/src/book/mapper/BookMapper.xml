@@ -27,4 +27,4 @@
           FROM BOOK b
          ORDER BY e.empno
     </select>
-</mapper>  
+</mapper>

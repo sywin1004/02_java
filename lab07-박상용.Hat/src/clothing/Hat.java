@@ -100,14 +100,17 @@ public class Hat {
 	 * @return 할인된 가격
 	 */
 	public double discount(int amount) {
-		Hat hat = new Hat();
-		double discount = 0;
-		if(hat.getPrice() - amount >= 0) {
-			discount = hat.getPrice() - amount;
+		
+		double result = price;
+		if (price - amount >= 0) {
+			result = price - amount;
+			
 		} else {
 			System.out.println("제품 가격보다 크게 할인할 수 없습니다.");
+			
 		}
-		return discount;			
+		
+		return result;			
 	}
 	
 	/**
@@ -115,8 +118,8 @@ public class Hat {
 	 * @param color
 	 */
 	public void dye(String color) {
-		Hat dyeHat = new Hat();
-		dyeHat.setColor(color);		
+		
+		this.color = color;		
 	}
 	
 	/**
@@ -125,13 +128,16 @@ public class Hat {
 	 * @return 판매후 남은 재고
 	 */
 	public int sell(int amount) {
-		Hat quantityHat = new Hat();
-		if(quantityHat.getQuantity() - amount >= 0) {
-			quantityHat.setQuantity(quantityHat.getQuantity() - amount);
+		
+		if (this.quantity - amount >= 0) {
+			this.quantity -= amount;
+			
 		} else {
 			System.out.println("보유 재고 수량이 부족합니다.");
+			
 		}
-		return quantityHat.getQuantity();
+		
+		return quantity;
 	}
 	
 	/**
@@ -140,10 +146,10 @@ public class Hat {
 	 * @return 증가한 재고수량
 	 */
 	public int buy(int amount) {
-		Hat buyHat = new Hat();
-		buyHat.setQuantity(buyHat.getQuantity() + amount);
 		
-		return buyHat.getQuantity();
+		quantity += amount;
+		
+		return quantity;
 	}
 	
 	/**

@@ -12,34 +12,34 @@
         SELECT e.empno
              , e.ename
              , e.job
+             , e.mgr
              , e.hiredate
              , e.sal
              , e.comm
              , e.deptno
           FROM emp e
-          <if test="empno != 0" >
+          <if test="empno != 0" > <!-- empno의 멤버변수 java의 조건식이다. -->
           WHERE e.empno = #{empno}
           </if>
           ORDER BY e.ename
     </select>
     
-    <select id="selectByName" parameterType="string" resultType="Emp"">
+    <select id="selectByName" parameterType="string" resultType="Emp">
         SELECT e.empno
-        , e.ename
-        , e.job
-        , e.hiredate
-        , e.sal
-        , e.comm
-        , e.deptno
-        FROM emp e
-        WHERE emp e
-        <if test="value != null">
-         WHERE e.ename Like'%' || #{value} || '%'
+		     , e.ename
+		     , e.job
+		     , e.mgr
+		     , e.hiredate
+		     , e.sal
+		     , e.comm
+		     , e.deptno
+		     FROM emp e
+        <if test="value != null"> <!-- mybatis의 특별한 변수 필드가 없는 입력값에서 기본형&String의 경우 쓸 수 있음 -->
+         WHERE e.ename Like '%' || #{value} || '%'
         </if>
         ORDER By e.ename
     </select>
-    
-    
+       
     
     
     <!-- emp 테이블에서 사번으로 1명의 정보 조회 -->
@@ -140,19 +140,41 @@
 
 	<update id="update2" parameterType="Emp">
 		UPDATE EMP e
-		   SET e.ename = #{ename}
+		 <set>
+		   <if test="ename != null">
+		     e.ename = #{ename}
+		   </if>
+		   <if test="job != null">
 		     , e.job = #{job}
+		   </if>
+		   <if test="mgr != null">
 		     , e.mgr = #{mgr}
+		   </if>
+		   <if test="hiredate != null">
 		     , e.hiredate = TO_DATE(#{hiredate}, 'YYYY-MM-DD HH24:MI:SS') 
+		   </if>
+		   <if test="sal > 0">
 		     , e.sal = #{sal}
+		   </if>
+		   <if test="comm > 0">
 		     , e.comm = #{comm}
+		   </if>
+		   <if test="deptno =! 0">
 		     , e.deptno = #{deptno}
+		   </if>
+		 </set>
+		 <trim prefix="SET" prefixOverrides="," />
 		 WHERE e.empno = #{empno}
 	</update>
-
+    
+    <!-- 사번:empno 가 0으로 입력되는 경우는 전체삭제로 작동
+         사번:empno 가 0이 아닌 값이 입력되는 경우는
+              한 건 삭제로 작동하는 동적 쿼리 -->
 	<delete id="delete2" parameterType="Emp">
 		DELETE EMP e
-		WHERE e.empno = #{empno}
+		<if test="empno != 0">
+		  WHERE e.empno = #{empno}
+		</if>
 	</delete>    
     
    

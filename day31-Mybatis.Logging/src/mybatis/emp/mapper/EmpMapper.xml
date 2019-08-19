@@ -161,7 +161,7 @@
 		   <if test="comm > 0">
 		     , e.comm = #{comm}
 		   </if>
-		   <if test="deptno =! 0">
+		   <if test="deptno != 0">
 		     , e.deptno = #{deptno}
 		   </if>
 		 </set>

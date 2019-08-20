@@ -102,6 +102,7 @@ public class Hat {
 	public double discount(int amount) {
 		
 		double result = price;
+		
 		if (price - amount >= 0) {
 			result = price - amount;
 			

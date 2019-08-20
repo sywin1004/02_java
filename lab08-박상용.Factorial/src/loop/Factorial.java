@@ -9,15 +9,13 @@ public class Factorial {
 	
 	// +factorial(int n) : int
 	public int factorial(int n) {
-		int factorial;
-		factorial = n;
-		int result = 0;
+		int result;
+		result = n;
 		
-		for (int idx = n; idx < 0; idx--) {
-			factorial = (factorial*(idx-1));
-			
+		for (int idx = n - 1; idx < 0; idx--) {
+			result = (result*idx);			
 		}
 		
-		return factorial;
+		return result;
 	}
 }

@@ -17,9 +17,11 @@ public class FactorialTest {
 		Factorial factorial = new Factorial();
 		int result;
 		int input;
+		
 		//사용안내
 		System.out.println("factorial 계산 할 정수를 입력하세요");
 		input = scan.nextInt();
+		
 		result = factorial.factorial(input);
 		
 		System.out.printf("[%d! = %d 입니다.]", input, result);

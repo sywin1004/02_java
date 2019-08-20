@@ -12,8 +12,8 @@ public class Factorial {
 		int result;
 		result = n;
 		
-		for (int idx = n - 1; idx < 0; idx--) {
-			result = (result*idx);			
+		for (int idx = n - 1; idx >= 1; idx--) {
+			result = (result * idx);			
 		}
 		
 		return result;

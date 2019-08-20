@@ -19,7 +19,7 @@ public class FactorialTest {
 		int input;
 		
 		//사용안내
-		System.out.println("factorial 계산 할 정수를 입력하세요");
+		System.out.println("factorial 계산 할 자연수를 입력하세요");
 		input = scan.nextInt();
 		
 		result = factorial.factorial(input);

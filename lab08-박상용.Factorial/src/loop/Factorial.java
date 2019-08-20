@@ -13,7 +13,7 @@ public class Factorial {
 		result = n;
 		
 		for (int idx = n - 1; idx >= 1; idx--) {
-			result = (result * idx);			
+			result *= idx;			
 		}
 		
 		return result;

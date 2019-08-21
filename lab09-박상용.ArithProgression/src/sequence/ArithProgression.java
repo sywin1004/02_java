@@ -8,14 +8,14 @@ package sequence;
 
 public class ArithProgression {
 	public int sequence(int start, int diff, int index) {
-		int sumResult = start;
-		int result = start;
+		int sumSequence = start;
+		int sequence = start;
 		
-		for(int idx = 0; idx < index - 1; idx++) {
-			result += diff;
-			sumResult += result;
+		for (int idx = 0; idx < index - 1; idx++) {
+			sequence += diff;
+			sumSequence += sequence;
 		}
 		
-		return sumResult;
+		return sumSequence;
 	}
 }

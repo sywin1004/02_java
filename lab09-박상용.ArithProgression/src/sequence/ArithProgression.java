@@ -7,6 +7,7 @@ package sequence;
  */
 
 public class ArithProgression {
+	
 	public int sequence(int start, int diff, int index) {
 		int sumSequence = start;
 		int resultSequence = start;
@@ -20,6 +21,7 @@ public class ArithProgression {
 	}
 	
 	public int sequence2(int start, int diff, int index) {
+		
 		if (index == 1) {
 			return start;
 			

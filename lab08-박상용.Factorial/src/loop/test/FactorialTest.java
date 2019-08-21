@@ -15,7 +15,8 @@ public class FactorialTest {
 		// 스캐너 선언 초기화, 안내 후 메소드로 사용
 		Scanner scan = new Scanner(System.in);
 		Factorial factorial = new Factorial();
-		int result;
+		
+		int result;		
 		int input;
 		
 		//사용안내

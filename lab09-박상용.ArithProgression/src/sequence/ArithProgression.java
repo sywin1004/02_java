@@ -9,13 +9,15 @@ package sequence;
 public class ArithProgression {
 	public int sequence(int start, int diff, int index) {
 		int sumSequence = start;
-		int sequence = start;
+		int resultSequence = start;
 		
 		for (int idx = 0; idx < index - 1; idx++) {
-			sequence += diff;
-			sumSequence += sequence;
+			resultSequence += diff;
+			sumSequence += resultSequence;
 		}
 		
 		return sumSequence;
 	}
 }
+
+

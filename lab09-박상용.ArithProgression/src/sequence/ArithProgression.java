@@ -28,10 +28,7 @@ public class ArithProgression {
 		} else {
 			
 			return start + (diff * (index - 1)) + sequence2(start, diff, index - 1);
-		}
-		
-		
-		
+		}		
 	}
 }
 

@@ -18,6 +18,19 @@ public class ArithProgression {
 		
 		return sumSequence;
 	}
+	
+	public int sequence2(int start, int diff, int index) {
+		if (index == 1) {
+			return 1;
+			
+		} else {
+			
+			return sequence2(start,	diff, index - 1);
+		}
+		
+		
+		
+	}
 }
 
 

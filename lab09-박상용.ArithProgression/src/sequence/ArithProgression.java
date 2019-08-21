@@ -21,11 +21,11 @@ public class ArithProgression {
 	
 	public int sequence2(int start, int diff, int index) {
 		if (index == 1) {
-			return 1;
+			return start;
 			
 		} else {
 			
-			return sequence2(start,	diff, index - 1);
+			return start + (diff * (index - 1)) + sequence2(start, diff, index - 1);
 		}
 		
 		

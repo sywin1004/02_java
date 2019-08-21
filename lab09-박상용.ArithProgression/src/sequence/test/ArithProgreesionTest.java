@@ -12,13 +12,13 @@ public class ArithProgreesionTest {
 	public static void main(String[] args) {
 		ArithProgression progression = new ArithProgression();
 		int result;
-		int firstInput = 1;
-		int secondInput = 3;
-		int thirdInput = 3;
+		int start = 1;
+		int diff = 3;
+		int index = 3;
 		
-		result = progression.sequence(firstInput, secondInput, thirdInput);
+		result = progression.sequence(start, diff, index);
 		
-		System.out.printf("첫항=%d 공차=%d 항의갯수=%d 등차수열 합=%d%n", firstInput, secondInput, thirdInput, result);
+		System.out.printf("첫항=%d 공차=%d 항의갯수=%d 등차수열 합=%d%n", start, diff, index, result);
 
 	}
 

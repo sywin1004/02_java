@@ -25,8 +25,7 @@ public class ArithProgression {
 		if (index == 1) {
 			return start;
 			
-		} else {
-			
+		} else {			
 			return start + (diff * (index - 1)) + sequence2(start, diff, index - 1);
 		}		
 	}

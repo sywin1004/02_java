@@ -19,7 +19,7 @@ public class ArithProgreesionTest {
 		result = progression.sequence(start, diff, index);
 		
 		System.out.printf("첫항=%d 공차=%d 항의갯수=%d 등차수열 합=%d%n", start, diff, index, result);
-		System.out.println("결과=" + progression.sequence2(start, diff, index));
+		System.out.printf("첫항=%d 공차=%d 항의갯수=%d 등차수열 합=%d%n", start, diff, index, progression.sequence2(start, diff, index));
 	}
 
 }

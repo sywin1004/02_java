@@ -10,11 +10,18 @@ import java.util.List;
  */
 public class ProcessNineArray {
 	
-	public void processNineArray(List<String> input) {
-		List<String> nineArray = new ArrayList<>();
+	public List<String> processNineArray(List<String> input) {
+		List<String> inputArray = input;
+		List<String> newArray = new ArrayList<String>();
 		
+		for (int idx = 0; idx < inputArray.size(); idx++) {
+			if (inputArray.get(idx).equals(newArray)) {
+				continue;
+			} else {
+				newArray.add(inputArray.get(idx));
+			}
+		}
 		
-		
+		return newArray;
 	}
-	
 }
